@@ -1,0 +1,3184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gotham Tech × Transcend – Partnership Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   VARIABLES
+   ═══════════════════════════════════════ */
+:root {
+  --navy: #0f1c2e;
+  --navy-deep: #0a1420;
+  --navy-mid: #162d4a;
+  --teal: #2ee8c5;
+  --teal-dim: #00c9b1;
+  --teal-soft: rgba(46,232,197,0.1);
+  --teal-glow: rgba(46,232,197,0.25);
+  --coral: #f87171;
+  --coral-soft: rgba(248,113,113,0.08);
+  --gold: #f59e0b;
+  --gold-soft: rgba(245,158,11,0.1);
+  --purple: #8b5cf6;
+  --purple-soft: rgba(139,92,246,0.1);
+  --cream: #f5f2ed;
+  --cream-warm: #faf8f5;
+  --card: #ffffff;
+  --text: #1a1e2c;
+  --text-mid: #4a5568;
+  --text-soft: #8492a6;
+  --border: #e8e4df;
+  --green-check: #2dd4a8;
+  --sidebar-w: 260px;
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+/* ═══════════════════════════════════════
+   SIDEBAR NAV
+   ═══════════════════════════════════════ */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: linear-gradient(180deg, #0e1e32 0%, var(--navy-deep) 60%, #0d1a28 100%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+.sidebar-brand {
+  padding: 0 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sidebar-brand .logo-circle {
+  width: 40px; height: 40px;
+  background: var(--navy-mid);
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--teal);
+  font-weight: 700; letter-spacing: 0.5px;
+}
+.sidebar-brand span {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px; font-weight: 300;
+}
+.sidebar-brand .brand-name {
+  color: #fff;
+  font-size: 14px; font-weight: 600;
+}
+
+.sidebar-section {
+  padding: 16px 20px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+.sidebar a:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.04);
+}
+.sidebar a.active {
+  color: #fff;
+  background: rgba(46,232,197,0.08);
+  border-left-color: var(--teal);
+  font-weight: 500;
+}
+.sidebar a .nav-icon {
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+}
+.nav-icon.teal { background: var(--teal); color: var(--navy); }
+.nav-icon.num { background: var(--teal-dim); color: var(--navy); font-size: 13px; }
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════ */
+.main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+/* Pages */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════
+   HERO SECTIONS (dark)
+   ═══════════════════════════════════════ */
+.hero-dark {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d2137 40%, #0e2a3e 70%, #0f2330 100%);
+  padding: 60px 64px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-dark::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 70%; height: 200%;
+  background: radial-gradient(ellipse, rgba(46,232,197,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-dark .badge {
+  display: inline-block;
+  background: rgba(46,232,197,0.12);
+  color: var(--teal);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border: 1px solid rgba(46,232,197,0.2);
+}
+.hero-dark h1 {
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hero-dark h1 em {
+  color: var(--teal);
+  font-style: italic;
+}
+.hero-dark p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.6);
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* Brand header for welcome page */
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.brand-header .logo-circle-lg {
+  width: 56px; height: 56px;
+  background: var(--navy-mid);
+  border: 2px solid rgba(46,232,197,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: var(--teal);
+  font-weight: 700; letter-spacing: 0.3px;
+  text-align: center; line-height: 1.2;
+}
+.brand-header .x-mark {
+  color: rgba(255,255,255,0.3);
+  font-size: 16px;
+}
+.brand-header .partner-label {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+  background: rgba(255,255,255,0.06);
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+/* ═══════════════════════════════════════
+   PHASE HERO (light)
+   ═══════════════════════════════════════ */
+.hero-light {
+  background: var(--cream-warm);
+  padding: 48px 64px 40px;
+}
+.hero-light .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.hero-light .back-link:hover { color: var(--teal-dim); }
+.hero-light .phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.hero-light .phase-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--teal-dim);
+  color: #fff;
+  font-size: 15px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+}
+.hero-light .phase-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal-dim);
+}
+.hero-light h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.hero-light p {
+  font-size: 16px;
+  color: var(--text-mid);
+  max-width: 600px;
+  line-height: 1.7;
+}
+.hero-light .date-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.hero-light .date-tag::before {
+  content: '📅';
+}
+
+/* ═══════════════════════════════════════
+   CONTENT SECTIONS
+   ═══════════════════════════════════════ */
+.content-section {
+  padding: 56px 64px;
+  background: var(--cream-warm);
+}
+.content-section + .content-section {
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal-dim);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-size: clamp(28px, 3.5vw, 38px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.section-subtitle {
+  font-size: 15px;
+  color: var(--text-mid);
+  margin-bottom: 32px;
+  max-width: 600px;
+}
+
+/* ═══════════════════════════════════════
+   FROM OUR TEAM (video placeholder)
+   ═══════════════════════════════════════ */
+.video-placeholder {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d2137 100%);
+  border-radius: 16px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+.play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(46,232,197,0.4);
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.play-btn:hover {
+  border-color: var(--teal);
+  background: rgba(46,232,197,0.1);
+}
+.play-btn svg { fill: var(--teal); width: 20px; margin-left: 3px; }
+.video-placeholder span {
+  color: rgba(255,255,255,0.4);
+  font-size: 14px;
+}
+
+/* ═══════════════════════════════════════
+   HOW WE WORK CARDS
+   ═══════════════════════════════════════ */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+.value-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+}
+.value-card .icon-circle {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  margin-bottom: 14px;
+  background: var(--cream);
+}
+.value-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: 'Outfit', sans-serif;
+}
+.value-card p {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   FOUR PHASES JOURNEY
+   ═══════════════════════════════════════ */
+.phases-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.phase-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.phase-card:hover {
+  border-color: var(--teal-dim);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.phase-card.current {
+  border: 2px solid var(--teal);
+}
+.phase-card .we-are-here {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--navy);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.phase-card .num {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700; font-size: 16px;
+  margin-bottom: 12px;
+}
+.phase-card .num.active { background: var(--teal); color: var(--navy); }
+.phase-card .num.inactive { background: var(--navy); color: #fff; }
+.phase-card .month {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+.phase-card .phase-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.phase-card .arrow {
+  position: absolute;
+  top: 24px; right: 20px;
+  color: var(--text-soft);
+  font-size: 18px;
+}
+
+/* ═══════════════════════════════════════
+   TEAM SECTION
+   ═══════════════════════════════════════ */
+.team-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d2137 50%, #0e2a3e 100%);
+  padding: 60px 64px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.team-hero::before {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -10%;
+  width: 60%; height: 200%;
+  background: radial-gradient(ellipse, rgba(46,232,197,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.team-hero .section-label { color: var(--teal); }
+.team-hero h1 {
+  font-size: clamp(36px, 4.5vw, 52px);
+  color: #fff;
+  margin-bottom: 12px;
+}
+.team-hero h1 em { color: var(--teal); }
+.team-hero p {
+  color: rgba(255,255,255,0.55);
+  font-size: 16px;
+  max-width: 560px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 48px 64px;
+  background: var(--cream-warm);
+}
+.team-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.team-card .color-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.team-card .color-bar.teal-bar { background: var(--teal); }
+.team-card .color-bar.coral-bar { background: var(--coral); }
+.team-card .color-bar.gold-bar { background: #fbbf24; }
+
+.team-card .avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  margin: 8px 0 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700; color: #fff;
+  font-family: 'Outfit', sans-serif;
+}
+.team-card .name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.team-card .role {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.team-card .role.teal-text { color: var(--teal-dim); }
+.team-card .role.coral-text { color: var(--coral); }
+.team-card .role.gold-text { color: var(--gold); }
+.team-card .desc {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.team-bullets {
+  list-style: disc;
+  padding-left: 18px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.team-bullets li {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  text-align: left;
+}
+.team-contact {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.team-contact a, .team-contact span {
+  font-size: 12px;
+  color: var(--text-soft);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.team-contact a:hover { color: var(--teal-dim); }
+
+/* ═══════════════════════════════════════
+   ROLES CARDS (Transcend Will / Gotham Tech Will)
+   ═══════════════════════════════════════ */
+.roles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+.role-card {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.role-card-header {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+}
+.role-card-header.transcend-header {
+  background: linear-gradient(135deg, #1a2e44 0%, var(--navy) 100%);
+}
+.role-card-header.gotham-header {
+  background: linear-gradient(135deg, #2d1a3e 0%, #1e1030 100%);
+}
+.role-card-header .header-logo {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; font-weight: 700;
+}
+.role-card-header .header-logo.t-logo {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+}
+.role-card-header .header-logo.gt-logo {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.role-card-body {
+  background: var(--card);
+  padding: 24px;
+}
+.role-card-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.role-card-body li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+.role-card-body li::before {
+  content: '';
+  width: 20px; height: 20px;
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.role-card.transcend-card li::before { background: var(--teal-dim); }
+.role-card.gotham-card li::before { background: var(--coral); }
+
+/* Interactive checkboxes */
+.role-card-body li {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.role-card-body li.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.role-card-body li.checked::before {
+  content: '✓';
+}
+.role-card-body li:not(.checked)::before {
+  content: '';
+  border: 2px solid;
+  background: transparent !important;
+}
+.role-card.transcend-card li:not(.checked)::before { border-color: var(--teal-dim); }
+.role-card.gotham-card li:not(.checked)::before { border-color: var(--coral); }
+.role-card.transcend-card li.checked::before { background: var(--teal-dim); }
+.role-card.gotham-card li.checked::before { background: var(--coral); }
+
+/* ═══════════════════════════════════════
+   DELIVERABLES
+   ═══════════════════════════════════════ */
+.deliverable-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 14px;
+  transition: box-shadow 0.2s;
+}
+.deliverable-card:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.deliverable-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.deliverable-icon.mint { background: #e6faf5; color: var(--teal-dim); }
+.deliverable-icon.pink { background: #fce7f3; color: #ec4899; }
+.deliverable-icon.lavender { background: #ede9fe; color: var(--purple); }
+.deliverable-icon.amber { background: #fef3c7; color: var(--gold); }
+.deliverable-icon.gear { background: #f3f4f6; }
+
+.deliverable-info { flex: 1; }
+.deliverable-info h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.deliverable-info p {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+.coming-soon {
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--text-soft);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════
+   OUTCOMES BOX (dark gradient)
+   ═══════════════════════════════════════ */
+.outcomes-box {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d2137 50%, #112a3c 100%);
+  border-radius: 16px;
+  padding: 48px;
+  margin-top: 8px;
+}
+.outcomes-box h2 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.outcome-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.outcome-check {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--teal-dim);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.outcome-check svg { width: 12px; fill: #fff; }
+.outcome-item p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════
+   CALENDAR
+   ═══════════════════════════════════════ */
+.calendar {
+  margin-top: 24px;
+}
+.calendar-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.calendar-header span {
+  font-style: normal;
+  font-size: 16px;
+  color: var(--text-soft);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.cal-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.cal-legend-dot {
+  width: 14px; height: 14px;
+  border-radius: 4px;
+}
+.cal-legend-dot.milestone { background: var(--navy); }
+.cal-legend-dot.joint { background: #e2e8f0; }
+.cal-legend-dot.transcend { background: #d1fae5; }
+.cal-legend-dot.gotham { background: #fce7f3; }
+.cal-legend-dot.weekly { background: #fef3c7; }
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.cal-day-header {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  padding: 8px 0;
+}
+.cal-day {
+  background: var(--card);
+  border-radius: 10px;
+  min-height: 90px;
+  padding: 10px;
+  position: relative;
+}
+.cal-day.empty {
+  background: transparent;
+}
+.cal-day .day-num {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+}
+.cal-event {
+  display: block;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cal-event.milestone-ev { background: var(--navy); color: #fff; }
+.cal-event.joint-ev { background: #e2e8f0; color: var(--text); }
+.cal-event.transcend-ev { background: #d1fae5; color: #065f46; }
+.cal-event.gotham-ev { background: #fce7f3; color: #9d174d; }
+.cal-event.weekly-ev { background: #fef3c7; color: #92400e; }
+
+/* ═══════════════════════════════════════
+   SEPARATOR
+   ═══════════════════════════════════════ */
+.gradient-sep {
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal) 0%, var(--navy) 50%, var(--teal) 100%);
+  opacity: 0.2;
+}
+
+/* ═══════════════════════════════════════
+   MASTER CALENDAR
+   ═══════════════════════════════════════ */
+.master-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mc-phase {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.mc-phase-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: var(--cream);
+  border-left: 4px solid;
+}
+.mc-phase-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  flex-shrink: 0;
+}
+.mc-phase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+.mc-phase-dates {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+.mc-events {
+  padding: 14px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mc-event {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+.mc-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.mc-date {
+  font-weight: 600;
+  color: var(--text);
+  min-width: 56px;
+  font-size: 12px;
+}
+.mc-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.mc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════
+   DESIGN TEAM FLOWCHART
+   ═══════════════════════════════════════ */
+.flow-chart {
+  padding: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.flow-track {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  min-width: max-content;
+  padding-bottom: 12px;
+}
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  border-top: 4px solid var(--flow-color, var(--teal));
+  border-left: none;
+  position: relative;
+  width: 170px;
+  min-height: 200px;
+  flex-shrink: 0;
+}
+.flow-node.flow-milestone {
+  background: var(--cream);
+}
+.flow-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--flow-color, var(--teal));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  flex-shrink: 0;
+}
+.flow-content { flex: 1; }
+.flow-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+.flow-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.flow-desc {
+  font-size: 11px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+.flow-recurring-tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: var(--text-soft);
+}
+.flow-connector {
+  height: 2px;
+  width: 28px;
+  background: var(--border);
+  margin: 0;
+  align-self: center;
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 80px;
+}
+.flow-connector::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 0; height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid var(--border);
+}
+
+/* ═══════════════════════════════════════
+   PHASE CHECKLIST ACCORDIONS
+   ═══════════════════════════════════════ */
+.checklist-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checklist-accordion {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+.checklist-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.checklist-header:hover { background: var(--cream); }
+.checklist-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.checklist-person {
+  flex: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+.checklist-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--cream);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.checklist-arrow {
+  font-size: 14px;
+  color: var(--text-soft);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.checklist-accordion.open .checklist-arrow { transform: rotate(180deg); }
+.checklist-body {
+  display: none;
+  padding: 0 20px 18px 70px;
+}
+.checklist-accordion.open .checklist-body { display: block; }
+.checklist-group {
+  margin-bottom: 14px;
+}
+.checklist-group:last-child { margin-bottom: 0; }
+.checklist-group-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+.checklist-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.checklist-body li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.checklist-body li::before {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 4px;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.2s;
+}
+.checklist-body li.checked {
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+.checklist-body li.checked::before {
+  content: '✓';
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  border-color: transparent;
+}
+.checklist-accordion[data-color="purple"] li.checked::before { background: #8b5cf6; }
+.checklist-accordion[data-color="purple"] .checklist-body li:not(.checked)::before { border-color: #c4b5fd; }
+.checklist-accordion[data-color="teal"] li.checked::before { background: var(--teal-dim); }
+.checklist-accordion[data-color="teal"] .checklist-body li:not(.checked)::before { border-color: var(--teal); }
+.checklist-accordion[data-color="coral"] li.checked::before { background: var(--coral); }
+.checklist-accordion[data-color="coral"] .checklist-body li:not(.checked)::before { border-color: #fca5a5; }
+.checklist-accordion[data-color="gold"] li.checked::before { background: var(--gold); }
+.checklist-accordion[data-color="gold"] .checklist-body li:not(.checked)::before { border-color: #fcd34d; }
+
+/* ═══════════════════════════════════════
+   RESOURCE CARDS
+   ═══════════════════════════════════════ */
+.resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.resource-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+a.resource-card:hover {
+  border-color: var(--teal);
+  box-shadow: 0 4px 16px rgba(46,232,197,0.1);
+  transform: translateY(-1px);
+}
+.resource-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.resource-info { flex: 1; min-width: 0; }
+.resource-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.resource-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.resource-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.resource-tag {
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.resource-tag.transcend-tag { background: #d1fae5; color: #065f46; }
+.resource-tag.gotham-tag { background: #fce7f3; color: #9d174d; }
+.resource-tag.joint-tag { background: #ede9fe; color: #6d28d9; }
+.resource-type {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+.resource-arrow {
+  font-size: 20px;
+  color: var(--teal-dim);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════
+   EVENT MODAL
+   ═══════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: #fff;
+  border-radius: 18px;
+  max-width: 520px;
+  width: 100%;
+  padding: 40px 40px 36px;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: modalIn 0.25s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f1f0ee;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--text-mid);
+  transition: background 0.2s;
+}
+.modal-close:hover { background: #e5e3df; }
+
+.modal-date {
+  font-size: 14px;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.modal-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.modal-badge.joint { background: #ede9fe; color: #6d28d9; }
+.modal-badge.transcend { background: #d1fae5; color: #065f46; }
+.modal-badge.gotham { background: #fce7f3; color: #9d174d; }
+.modal-badge.milestone { background: var(--navy); color: #fff; }
+.modal-owner {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--teal-soft);
+  color: var(--teal-dim);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.modal-btn:hover {
+  background: var(--navy-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.modal-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+.gcal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a73e8;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.gcal-btn:hover {
+  background: #f1f3f4;
+  border-color: #1a73e8;
+  box-shadow: 0 1px 4px rgba(26,115,232,0.15);
+}
+.gcal-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* In modal */
+.modal-gcal { margin-top: 16px; }
+
+/* In checklist accordion */
+.checklist-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.checklist-group-header .checklist-group-label { margin-bottom: 0; }
+
+.cal-event .cal-owner {
+  font-size: 9px;
+  opacity: 0.8;
+  display: block;
+  font-weight: 500;
+}
+
+.modal-desc {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.modal-section-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.modal-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.modal-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.modal-items li::before {
+  content: '→';
+  color: var(--teal-dim);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0px;
+}
+
+/* ═══════════════════════════════════════
+   CLICKABLE CALENDAR EVENTS
+   ═══════════════════════════════════════ */
+.cal-event[data-event] {
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.cal-event[data-event]:hover {
+  opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════
+   MOBILE TOGGLE
+   ═══════════════════════════════════════ */
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--navy);
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-toggle span {
+  display: block;
+  width: 20px; height: 2px;
+  background: #fff;
+  margin: 4px auto;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .phases-row { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .mobile-toggle { display: flex; }
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .hero-dark, .hero-light, .content-section, .team-hero, .team-grid {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .phases-row, .roles-grid, .values-grid, .outcomes-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .cal-grid { font-size: 10px; }
+  .cal-day { min-height: 60px; padding: 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ MOBILE TOGGLE ═══ -->
+<button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- ═══ SIDEBAR ═══ -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-circle">GT</div>
+    <div>
+      <span>×</span>
+      <span class="brand-name">Transcend</span>
+    </div>
+  </div>
+
+  <div class="sidebar-section">Hub</div>
+  <a class="active" onclick="showPage('welcome')">
+    <span class="nav-icon teal">🏠</span>Welcome
+  </a>
+  <a onclick="showPage('team')">
+    <span class="nav-icon teal">👥</span>Our Team
+  </a>
+  <a onclick="showPage('executive')">
+    <span class="nav-icon teal">📊</span>Executive Summary
+  </a>
+
+  <div class="sidebar-section">Phases of Work</div>
+  <a onclick="showPage('phase1')">
+    <span class="nav-icon num">1</span>Current State
+  </a>
+  <a onclick="showPage('phase2')">
+    <span class="nav-icon num">2</span>Playbook
+  </a>
+  <a onclick="showPage('phase3')">
+    <span class="nav-icon num">3</span>Scope &amp; Sequence
+  </a>
+  <a onclick="showPage('phase4')">
+    <span class="nav-icon num">4</span>Professional Learning
+  </a>
+
+  <div class="sidebar-section">Resources</div>
+  <a onclick="showPage('resources')">
+    <span class="nav-icon teal">📁</span>Resource Library
+  </a>
+</nav>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<div class="main">
+
+  <!-- ══════════════════════════════════
+       WELCOME PAGE
+       ══════════════════════════════════ -->
+  <div id="welcome" class="page active">
+    <div class="hero-dark">
+      <div class="brand-header">
+        <div class="logo-circle-lg">GOTHAM<br>TECH</div>
+        <span class="x-mark">×</span>
+        <span class="partner-label">Transcend</span>
+      </div>
+      <div class="badge">Spring 2026</div>
+      <h1>Welcome,<br><em>Gotham Tech.</em></h1>
+      <p>This spring, we'll work together to build a school-owned DEEDS instructional model grounded in the needs, strengths, realities, and aspirations of your classrooms, your teachers, and your students. Every step of this process is designed with and for your team. This hub is your home base for the journey.</p>
+    </div>
+
+    <!-- A Quick Hello -->
+    <div class="content-section">
+      <div class="section-label">From Our Team</div>
+      <h2 class="section-title">A Quick Hello</h2>
+      <p class="section-subtitle">Before we dig in, we wanted to say hi and give you a sense of who we are, what this partnership is about, and why we're excited to do this work with you.</p>
+      <div class="video-placeholder">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <span>Welcome video coming soon</span>
+      </div>
+    </div>
+
+    <!-- How We Work -->
+    <div class="content-section">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">What to Expect From Us</h2>
+      <p class="section-subtitle">This isn't a consulting engagement where we hand you a binder and wish you luck.</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="icon-circle">🤝</div>
+          <h3>We Build With You</h3>
+          <p>Your teachers and leaders shape every decision. We bring frameworks, facilitation, and broad experience implementing DEEDS in a range of settings. You bring the context and deep expertise on your school and community context.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon-circle">🔍</div>
+          <h3>Evidence First</h3>
+          <p>No guessing. Every design choice starts with what we actually see and hear in classrooms, surveys, and conversations, combined with what research tells us about the science of learning and development.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon-circle">📝</div>
+          <h3>Drafts Before Finals</h3>
+          <p>You'll see our work early and often. We build in feedback loops at every stage so that there are no surprises.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon-circle">🏆</div>
+          <h3>It's Yours</h3>
+          <p>Everything we create is meant to help the Gotham Tech team be sustainable over time — building internal capacity, shared expectations, and systems that strengthen the work year over year.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Four Phases -->
+    <div class="content-section">
+      <div class="section-label">The Journey Ahead</div>
+      <h2 class="section-title">Four Phases, One Goal</h2>
+      <p class="section-subtitle">By the end of this spring, Gotham Tech will have a complete, school-owned system for challenge-based learning. Here's how we get there.</p>
+      <div class="phases-row">
+        <div class="phase-card current" onclick="showPage('phase1')">
+          <span class="we-are-here">We Are Here</span>
+          <div class="num active">1</div>
+          <div class="month">Feb – Mar</div>
+          <div class="phase-name">Understand the Current State</div>
+          <span class="arrow">→</span>
+        </div>
+        <div class="phase-card" onclick="showPage('phase2')">
+          <div class="num inactive">2</div>
+          <div class="month">April</div>
+          <div class="phase-name">Build the Instructional Playbook</div>
+          <span class="arrow">→</span>
+        </div>
+        <div class="phase-card" onclick="showPage('phase3')">
+          <div class="num inactive">3</div>
+          <div class="month">May</div>
+          <div class="phase-name">Develop the Scope &amp; Sequence</div>
+          <span class="arrow">→</span>
+        </div>
+        <div class="phase-card" onclick="showPage('phase4')">
+          <div class="num inactive">4</div>
+          <div class="month">June</div>
+          <div class="phase-name">Plan for Professional Learning</div>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       OUR TEAM PAGE
+       ══════════════════════════════════ -->
+  <div id="team" class="page">
+    <!-- Gotham Tech Team -->
+    <div class="team-hero">
+      <div class="section-label">Your Team</div>
+      <h1>The People Behind<br><em>the Work</em></h1>
+      <p>Our shared team is made up of the leaders at Gotham Tech and the Transcend partners, working together to drive the work forward.</p>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Gotham Tech</div>
+      <h2 class="section-title" style="margin-bottom:24px;">School Leadership</h2>
+      <div class="team-grid" style="padding:0; grid-template-columns: repeat(2, 1fr);">
+        <div class="team-card" style="grid-column: 1 / -1; max-width: 380px;">
+          <div class="color-bar" style="background:#8b5cf6;"></div>
+          <div class="avatar" style="background:#4c1d95;">L</div>
+          <div class="name">Luis Familia</div>
+          <div class="role" style="color:#7c3aed;">Principal</div>
+          <p class="desc">The driving force behind Gotham Tech's commitment to challenge-based learning. Luis sets the vision, clears the path for this work, and ensures it connects to the school's broader goals.</p>
+          <div class="team-contact">
+            <a href="mailto:LFamilia@schools.nyc.gov">&#9993; LFamilia@schools.nyc.gov</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="color-bar" style="background:#a78bfa;"></div>
+          <div class="avatar" style="background:#5b21b6;">M</div>
+          <div class="name">Margaret Hyams</div>
+          <div class="role" style="color:#7c3aed;">Math, Science &amp; Special Education</div>
+          <p class="desc">Responsible for supporting the Math, Science, and Special Education team.</p>
+          <div class="team-contact">
+            <a href="mailto:MHyams@schools.nyc.gov">&#9993; MHyams@schools.nyc.gov</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="color-bar" style="background:#a78bfa;"></div>
+          <div class="avatar" style="background:#5b21b6;">K</div>
+          <div class="name">Kimberly Castrillon</div>
+          <div class="role" style="color:#7c3aed;">ENL, Social Studies &amp; ELA</div>
+          <p class="desc">Responsible for ENL and supporting the Social Studies and ELA teams.</p>
+          <div class="team-contact">
+            <a href="mailto:KCastrillon@schools.nyc.gov">&#9993; KCastrillon@schools.nyc.gov</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="color-bar" style="background:#a78bfa;"></div>
+          <div class="avatar" style="background:#5b21b6;">J</div>
+          <div class="name">James Felder</div>
+          <div class="role" style="color:#7c3aed;">Work-Based Learning</div>
+          <p class="desc">Responsible for Work-based Learning and the Collaborative Class.</p>
+          <div class="team-contact">
+            <a href="mailto:JFelder2@schools.nyc.gov">&#9993; JFelder2@schools.nyc.gov</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Transcend Team -->
+    <div class="content-section">
+      <div class="section-label">Transcend</div>
+      <h2 class="section-title" style="margin-bottom:24px;">Your Partnership Team</h2>
+      <div class="team-grid" style="padding:0;">
+        <div class="team-card">
+          <div class="color-bar teal-bar"></div>
+          <div class="avatar" style="background:#2d3748;">S</div>
+          <div class="name">Sarah</div>
+          <div class="role teal-text">Project + Curriculum Lead</div>
+          <ul class="team-bullets">
+            <li>DEEDS Playbook &amp; scope/sequence</li>
+            <li>All instructional materials</li>
+            <li>Working sessions &amp; design days</li>
+            <li>Drafts grounded in teacher needs</li>
+          </ul>
+          <div class="team-contact">
+            <a href="mailto:sarah@transcendeducation.org">✉ sarah@transcendeducation.org</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="color-bar coral-bar"></div>
+          <div class="avatar" style="background:#f87171;">J</div>
+          <div class="name">Jeremy</div>
+          <div class="role coral-text">Facilitation Lead + Storyteller</div>
+          <ul class="team-bullets">
+            <li>Working sessions &amp; design days</li>
+            <li>Teacher voice at center</li>
+            <li>Feedback conversations</li>
+            <li>Data collection, analysis, sharing</li>
+          </ul>
+          <div class="team-contact">
+            <a href="mailto:jeremy@transcendeducation.org">✉ jeremy@transcendeducation.org</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="color-bar gold-bar"></div>
+          <div class="avatar" style="background:#fbbf24;">J</div>
+          <div class="name">Jenn</div>
+          <div class="role gold-text">Leadership Support</div>
+          <ul class="team-bullets">
+            <li>Communication strategy</li>
+            <li>Coaching structures</li>
+            <li>Conditions for the work to land</li>
+          </ul>
+          <div class="team-contact">
+            <a href="mailto:jenn@transcendeducation.org">✉ jenn@transcendeducation.org</a>
+            <span>📱 516-491-6677</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       EXECUTIVE SUMMARY
+       ══════════════════════════════════ -->
+  <div id="executive" class="page">
+    <div class="hero-dark">
+      <a class="back-link" onclick="showPage('welcome')" style="color:rgba(255,255,255,0.5);">← Back to Hub</a>
+      <div class="section-label">Executive Summary</div>
+      <h1>The Big Picture</h1>
+      <p>A high-level view of the full partnership timeline, key milestones, and the design team meeting cadence across all four phases.</p>
+    </div>
+
+    <!-- Master Calendar -->
+    <div class="content-section">
+      <div class="section-label">Full Timeline</div>
+      <h2 class="section-title" style="margin-bottom:8px;">Master Calendar</h2>
+      <p class="section-subtitle" style="margin-bottom:24px;">All key events and milestones across the partnership.</p>
+
+      <div class="master-cal">
+        <!-- Phase 1 -->
+        <div class="mc-phase">
+          <div class="mc-phase-header" style="border-color:#8b5cf6;">
+            <div class="mc-phase-num" style="background:#8b5cf6;">1</div>
+            <div>
+              <div class="mc-phase-title">Current State</div>
+              <div class="mc-phase-dates">Feb 13 – Mar 30, 2026</div>
+            </div>
+          </div>
+          <div class="mc-events">
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Feb 13</span>Welcome Call</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--coral);"></span><span class="mc-date">Feb 16</span>Notify Staff About Partnership</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Feb 20</span>Weekly Call — Hub Review + Survey Overview</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Feb 23</span>🚀 Partnership Launch + Onsite Visit</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--coral);"></span><span class="mc-date">Feb 25</span>Share Instructional Resources</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--coral);"></span><span class="mc-date">Feb 27</span>LEAPS + Adult Culture Surveys Due</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Mar 2</span>Data Synthesis Begins</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Mar 6</span>Select Design Team</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--gold);"></span><span class="mc-date">Mar 13</span>Leadership Coaching Call</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Mar 20</span>📋 Current State Blueprint Delivered</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Mar 27</span>Weekly Call — Blueprint Debrief</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Mar 30</span>📝 End of Phase 1 Memo</div>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="mc-phase">
+          <div class="mc-phase-header" style="border-color:var(--teal);">
+            <div class="mc-phase-num" style="background:var(--teal);">2</div>
+            <div>
+              <div class="mc-phase-title">DEEDS Playbook</div>
+              <div class="mc-phase-dates">Apr – Jun 2026</div>
+            </div>
+          </div>
+          <div class="mc-events">
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Apr</span>Design Team Kickoff</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Apr–Jun</span>Weekly Partnership Calls</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Apr–Jun</span>Design Team Working Sessions (bi-weekly)</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Jun</span>📋 DEEDS Playbook Draft Delivered</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--gold);"></span><span class="mc-date">Ongoing</span>Leadership Coaching Sessions</div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="mc-phase">
+          <div class="mc-phase-header" style="border-color:var(--coral);">
+            <div class="mc-phase-num" style="background:var(--coral);">3</div>
+            <div>
+              <div class="mc-phase-title">Scope &amp; Sequence</div>
+              <div class="mc-phase-dates">Jul – Sep 2026</div>
+            </div>
+          </div>
+          <div class="mc-events">
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Jul–Sep</span>Design Team Working Sessions</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Jul–Sep</span>Weekly Partnership Calls</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Sep</span>📋 Year-Long Scope &amp; Sequence Delivered</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--gold);"></span><span class="mc-date">Ongoing</span>Leadership Coaching Sessions</div>
+          </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="mc-phase">
+          <div class="mc-phase-header" style="border-color:var(--gold);">
+            <div class="mc-phase-num" style="background:var(--gold);">4</div>
+            <div>
+              <div class="mc-phase-title">Professional Learning</div>
+              <div class="mc-phase-dates">Oct – Dec 2026</div>
+            </div>
+          </div>
+          <div class="mc-events">
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Oct–Dec</span>Professional Learning Sessions</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--teal);"></span><span class="mc-date">Oct–Dec</span>Weekly Partnership Calls</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--navy);"></span><span class="mc-date">Dec</span>📋 PL Plan + Sustainability Roadmap</div>
+            <div class="mc-event"><span class="mc-dot" style="background:var(--gold);"></span><span class="mc-date">Ongoing</span>Leadership Coaching Sessions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="content-section" style="padding-top:0;">
+      <div class="mc-legend">
+        <div class="mc-legend-item"><span class="mc-dot" style="background:var(--navy);"></span>Milestone</div>
+        <div class="mc-legend-item"><span class="mc-dot" style="background:var(--teal);"></span>Transcend</div>
+        <div class="mc-legend-item"><span class="mc-dot" style="background:var(--coral);"></span>Gotham Tech</div>
+        <div class="mc-legend-item"><span class="mc-dot" style="background:var(--gold);"></span>Coaching</div>
+      </div>
+    </div>
+
+    <!-- Design Team Meeting Flowchart -->
+    <div class="content-section">
+      <div class="section-label">Design Team</div>
+      <h2 class="section-title" style="margin-bottom:8px;">Meeting Flow</h2>
+      <p class="section-subtitle" style="margin-bottom:28px;">How design team meetings build on each other from formation through implementation.</p>
+
+      <div class="flow-chart">
+        <div class="flow-track">
+          <!-- Phase 1 -->
+          <div class="flow-node flow-milestone" style="--flow-color:#8b5cf6;">
+            <div class="flow-icon">1</div>
+            <div class="flow-content">
+              <div class="flow-label">Phase 1 · Mar 6</div>
+              <div class="flow-title">Design Team Selection</div>
+              <div class="flow-desc">Identify 6–8 teachers and leaders who will shape the DEEDS model. Diverse representation across departments.</div>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+
+          <!-- Phase 2 meetings -->
+          <div class="flow-node" style="--flow-color:var(--teal);">
+            <div class="flow-icon">2a</div>
+            <div class="flow-content">
+              <div class="flow-label">Phase 2 · April</div>
+              <div class="flow-title">Design Team Kickoff</div>
+              <div class="flow-desc">Share the Current State Blueprint findings. Align on playbook vision, norms, and working agreements.</div>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+
+          <div class="flow-node flow-recurring" style="--flow-color:var(--teal);">
+            <div class="flow-icon">2b</div>
+            <div class="flow-content">
+              <div class="flow-label">Phase 2 · Bi-weekly</div>
+              <div class="flow-title">Playbook Working Sessions</div>
+              <div class="flow-desc">Co-design DEEDS instructional model components. Review drafts, give feedback, and iterate. Teachers bring classroom reality to every decision.</div>
+              <div class="flow-recurring-tag">↻ Repeating</div>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+
+          <div class="flow-node flow-milestone" style="--flow-color:var(--teal);">
+            <div class="flow-icon">✓</div>
+            <div class="flow-content">
+              <div class="flow-label">Phase 2 · June</div>
+              <div class="flow-title">Playbook Draft Review</div>
+              <div class="flow-desc">Full design team reviews the DEEDS Playbook draft. Final feedback round before delivery.</div>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+
+          <!-- Phase 3 meetings -->
+          <div class="flow-node flow-recurring" style="--flow-color:var(--coral);">
+            <div class="flow-icon">3</div>
+            <div class="flow-content">
+              <div class="flow-label">Phase 3 · Jul–Sep</div>
+              <div class="flow-title">Scope &amp; Sequence Sessions</div>
+              <div class="flow-desc">Translate the playbook into a year-long instructional plan. Map units, projects, and assessments across subjects and grades.</div>
+              <div class="flow-recurring-tag">↻ Repeating</div>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+
+          <!-- Phase 4 meetings -->
+          <div class="flow-node flow-recurring" style="--flow-color:var(--gold);">
+            <div class="flow-icon">4</div>
+            <div class="flow-content">
+              <div class="flow-label">Phase 4 · Oct–Dec</div>
+              <div class="flow-title">Professional Learning Sessions</div>
+              <div class="flow-desc">Design team becomes PL leaders. Plan and co-facilitate professional learning for full staff on the DEEDS model.</div>
+              <div class="flow-recurring-tag">↻ Repeating</div>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+
+          <div class="flow-node flow-milestone" style="--flow-color:var(--navy);">
+            <div class="flow-icon">🎯</div>
+            <div class="flow-content">
+              <div class="flow-label">End of Partnership</div>
+              <div class="flow-title">Handoff &amp; Sustainability</div>
+              <div class="flow-desc">Design team owns the model. Internal capacity built. Sustainability roadmap in place for fall rollout and beyond.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PHASE 1
+       ══════════════════════════════════ -->
+  <div id="phase1" class="page">
+    <div class="hero-light">
+      <a class="back-link" onclick="showPage('welcome')">← Back to Hub</a>
+      <div class="phase-badge">
+        <div class="phase-num">1</div>
+        <div class="phase-label">Phase One</div>
+      </div>
+      <h1>Understand the Current State</h1>
+      <p>Before we design anything, we need to see things clearly together — what's already working, where things are inconsistent, and who should help shape what comes next.</p>
+      <div class="date-tag">February 13 – March 30, 2026</div>
+    </div>
+
+    <!-- Roles -->
+    <div class="content-section">
+      <div class="section-label">Who Does What</div>
+      <h2 class="section-title">Our Roles in This Phase</h2>
+      <p class="section-subtitle">Here's how we split the work so nothing falls through the cracks.</p>
+      <div class="roles-grid">
+        <div class="role-card transcend-card">
+          <div class="role-card-header transcend-header">
+            <div class="header-logo t-logo">T</div>
+            Transcend Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Conduct classroom observations during onsite visit</li>
+              <li>Facilitate teacher and student focus groups</li>
+              <li>Lead leadership interviews</li>
+              <li>Administer and analyze LEAPS survey as a baseline</li>
+              <li>Synthesize all findings into a Current State Blueprint</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card gotham-card">
+          <div class="role-card-header gotham-header">
+            <div class="header-logo gt-logo">GT</div>
+            Gotham Tech Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Launch the partnership internally with staff</li>
+              <li>Coordinate schedules and access for the onsite visit</li>
+              <li>Share instructional materials and artifacts</li>
+              <li>Participate in interviews and conversations</li>
+              <li>Identify teacher leaders to serve on the design team</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 1 At a Glance -->
+    <div class="content-section">
+      <div class="section-label">Quick View</div>
+      <h2 class="section-title">Phase 1 At a Glance</h2>
+      <p class="section-subtitle">All to-dos by person — expand to see what's on your plate.</p>
+
+      <div class="checklist-grid">
+
+        <!-- Luis -->
+        <div class="checklist-accordion" data-color="purple" onclick="this.classList.toggle('open')">
+          <div class="checklist-header">
+            <div class="checklist-avatar" style="background:#4c1d95;">L</div>
+            <div class="checklist-person">Luis <span style="font-family:'Outfit',sans-serif; font-size:13px; font-weight:400; color:var(--text-soft);">Principal</span></div>
+            <div class="checklist-count">7 items</div>
+            <div class="checklist-arrow">▾</div>
+          </div>
+          <div class="checklist-body" onclick="event.stopPropagation()">
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 16 · Notify Staff</div>
+              <ul>
+                <li>Prepare internal talking points about the partnership</li>
+                <li>Plan a brief moment to introduce the work to leadership</li>
+                <li>Share the partnership hub link with leadership team</li>
+                <li>Send introductory email or communication to staff about partnership, including what to expect (observations, focus groups, surveys) and reassurance that observations are non-evaluative</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 23 · Onsite Visit</div>
+              <ul>
+                <li>Finalize observation schedule (which classrooms, which periods)</li>
+                <li>Reserve a quiet room for focus groups and interviews</li>
+                <li>Schedule leadership interview (45–60 minutes)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gotham Tech Team (Shared) -->
+        <div class="checklist-accordion" data-color="coral" onclick="this.classList.toggle('open')">
+          <div class="checklist-header">
+            <div class="checklist-avatar" style="background:var(--coral);">GT</div>
+            <div class="checklist-person">Gotham Tech Team <span style="font-family:'Outfit',sans-serif; font-size:13px; font-weight:400; color:var(--text-soft);">Shared</span></div>
+            <div class="checklist-count">9 items</div>
+            <div class="checklist-arrow">▾</div>
+          </div>
+          <div class="checklist-body" onclick="event.stopPropagation()">
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 23 · Onsite Visit</div>
+              <ul>
+                <li>Let teachers know observers will be present (low-stakes, not evaluative)</li>
+                <li>Identify 6–8 teachers for focus group participation</li>
+                <li>Confirm student focus group participants (diverse mix)</li>
+                <li>Block time at end of day for debrief</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 25 · Share Resources</div>
+              <ul>
+                <li>Gather current unit plans, lesson plans, and curriculum maps</li>
+                <li>Include rubrics, assessment tools, or project templates</li>
+                <li>Share schoolwide instructional guidance documents</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 27 · Surveys Due</div>
+              <ul>
+                <li>Administer LEAPS survey to identified classes (20–25 min per group)</li>
+                <li>Ensure all staff complete the Adult Culture Survey</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sarah -->
+        <div class="checklist-accordion" data-color="teal" onclick="this.classList.toggle('open')">
+          <div class="checklist-header">
+            <div class="checklist-avatar" style="background:#2d3748;">S</div>
+            <div class="checklist-person">Sarah <span style="font-family:'Outfit',sans-serif; font-size:13px; font-weight:400; color:var(--text-soft);">Project + Curriculum Lead</span></div>
+            <div class="checklist-count">8 items</div>
+            <div class="checklist-arrow">▾</div>
+          </div>
+          <div class="checklist-body" onclick="event.stopPropagation()">
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 13 · Welcome Call</div>
+              <ul>
+                <li>Walk through partnership hub with Gotham Tech leadership</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 20 · Weekly Call</div>
+              <ul>
+                <li>Present LEAPS Survey and Adult Culture Survey overview</li>
+                <li>Finalize site visit logistics and agenda</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 23 · Launch &amp; Visit</div>
+              <ul>
+                <li>Support partnership launch with leadership staff</li>
+                <li>Engage in onsite observations and focus groups</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 25 · Resources</div>
+              <ul>
+                <li>Receive and organize instructional resources from Gotham Tech</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Mar 20 · Blueprint</div>
+              <ul>
+                <li>Deliver Current State Blueprint with findings and recommendations</li>
+                <li>Include LEAPS and Adult Culture Survey analysis</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jeremy -->
+        <div class="checklist-accordion" data-color="coral" onclick="this.classList.toggle('open')">
+          <div class="checklist-header">
+            <div class="checklist-avatar" style="background:#f87171;">J</div>
+            <div class="checklist-person">Jeremy <span style="font-family:'Outfit',sans-serif; font-size:13px; font-weight:400; color:var(--text-soft);">Facilitation Lead + Storyteller</span></div>
+            <div class="checklist-count">6 items</div>
+            <div class="checklist-arrow">▾</div>
+          </div>
+          <div class="checklist-body" onclick="event.stopPropagation()">
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 23 · Launch &amp; Visit</div>
+              <ul>
+                <li>Facilitate partnership launch with leadership staff</li>
+                <li>Lead onsite observations and focus groups</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Mar 2 · Synthesis</div>
+              <ul>
+                <li>Lead data synthesis — observations, focus groups, surveys, artifacts</li>
+                <li>Collect additional staff and scholar feedback for those who were not represented in initial focus groups</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Mar 6 · Design Team</div>
+              <ul>
+                <li>Facilitate design team selection conversation</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Mar 30 · Phase Memo</div>
+              <ul>
+                <li>Draft and deliver End of Phase 1 Memo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jenn -->
+        <div class="checklist-accordion" data-color="gold" onclick="this.classList.toggle('open')">
+          <div class="checklist-header">
+            <div class="checklist-avatar" style="background:#fbbf24;">J</div>
+            <div class="checklist-person">Jenn <span style="font-family:'Outfit',sans-serif; font-size:13px; font-weight:400; color:var(--text-soft);">Leadership Support</span></div>
+            <div class="checklist-count">3 items</div>
+            <div class="checklist-arrow">▾</div>
+          </div>
+          <div class="checklist-body" onclick="event.stopPropagation()">
+            <div class="checklist-group">
+              <div class="checklist-group-label">Feb 16 · Staff Notification</div>
+              <ul>
+                <li>Support Luis with staff communication talking points</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Mar 13 · Leadership Coaching</div>
+              <ul>
+                <li>Lead coaching session on conditions for Phase 2 and communicating findings</li>
+              </ul>
+            </div>
+            <div class="checklist-group">
+              <div class="checklist-group-label">Mar 30 · Phase Memo</div>
+              <ul>
+                <li>Contribute leadership support section to End of Phase 1 Memo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="content-section">
+      <div class="section-label">Timeline</div>
+      <h2 class="section-title">Phase 1 Calendar</h2>
+      <p class="section-subtitle">Click any event to see exactly what's happening and how to prepare.</p>
+      <div class="cal-legend">
+        <div class="cal-legend-item"><div class="cal-legend-dot milestone"></div>Milestone</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot joint"></div>Joint</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot transcend"></div>Transcend</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot gotham"></div>Gotham Tech</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot weekly"></div>Weekly Call</div>
+      </div>
+      <div class="calendar">
+        <div class="calendar-header">February <span>2026</span></div>
+        <div class="cal-grid">
+          <div class="cal-day-header">Sun</div><div class="cal-day-header">Mon</div><div class="cal-day-header">Tue</div><div class="cal-day-header">Wed</div><div class="cal-day-header">Thu</div><div class="cal-day-header">Fri</div><div class="cal-day-header">Sat</div>
+          <div class="cal-day"><div class="day-num">1</div></div>
+          <div class="cal-day"><div class="day-num">2</div></div>
+          <div class="cal-day"><div class="day-num">3</div></div>
+          <div class="cal-day"><div class="day-num">4</div></div>
+          <div class="cal-day"><div class="day-num">5</div></div>
+          <div class="cal-day"><div class="day-num">6</div></div>
+          <div class="cal-day"><div class="day-num">7</div></div>
+          <div class="cal-day"><div class="day-num">8</div></div>
+          <div class="cal-day"><div class="day-num">9</div></div>
+          <div class="cal-day"><div class="day-num">10</div></div>
+          <div class="cal-day"><div class="day-num">11</div></div>
+          <div class="cal-day"><div class="day-num">12</div></div>
+          <div class="cal-day"><div class="day-num">13</div><span class="cal-event joint-ev" data-event onclick="openEvent('welcomecall')">Welcome Call</span></div>
+          <div class="cal-day"><div class="day-num">14</div></div>
+          <div class="cal-day"><div class="day-num">15</div></div>
+          <div class="cal-day"><div class="day-num">16</div><span class="cal-event gotham-ev" data-event onclick="openEvent('staffemail')">Notify Staff</span></div>
+          <div class="cal-day"><div class="day-num">17</div></div>
+          <div class="cal-day"><div class="day-num">18</div></div>
+          <div class="cal-day"><div class="day-num">19</div></div>
+          <div class="cal-day"><div class="day-num">20</div><span class="cal-event weekly-ev" data-event onclick="openEvent('weekly1')">Weekly Call</span></div>
+          <div class="cal-day"><div class="day-num">21</div></div>
+          <div class="cal-day"><div class="day-num">22</div></div>
+          <div class="cal-day"><div class="day-num">23</div><span class="cal-event milestone-ev" data-event onclick="openEvent('launch')">🚀 Launch</span><span class="cal-event joint-ev" data-event onclick="openEvent('onsite')" style="font-size:10px;">Onsite Visit</span></div>
+          <div class="cal-day"><div class="day-num">24</div></div>
+          <div class="cal-day"><div class="day-num">25</div><span class="cal-event gotham-ev" data-event onclick="openEvent('resources')">Share Resources</span></div>
+          <div class="cal-day"><div class="day-num">26</div></div>
+          <div class="cal-day"><div class="day-num">27</div><span class="cal-event weekly-ev" data-event onclick="openEvent('weekly2')">Weekly Call</span><span class="cal-event gotham-ev" data-event onclick="openEvent('leaps')" style="font-size:10px;">Surveys Due</span></div>
+          <div class="cal-day"><div class="day-num">28</div></div>
+        </div>
+
+        <div class="calendar-header" style="margin-top:32px;">March <span>2026</span></div>
+        <div class="cal-grid">
+          <div class="cal-day-header">Sun</div><div class="cal-day-header">Mon</div><div class="cal-day-header">Tue</div><div class="cal-day-header">Wed</div><div class="cal-day-header">Thu</div><div class="cal-day-header">Fri</div><div class="cal-day-header">Sat</div>
+          <div class="cal-day"><div class="day-num">1</div></div>
+          <div class="cal-day"><div class="day-num">2</div><span class="cal-event transcend-ev" data-event onclick="openEvent('synthesis')">Synthesis</span></div>
+          <div class="cal-day"><div class="day-num">3</div></div>
+          <div class="cal-day"><div class="day-num">4</div></div>
+          <div class="cal-day"><div class="day-num">5</div></div>
+          <div class="cal-day"><div class="day-num">6</div><span class="cal-event weekly-ev" data-event onclick="openEvent('weekly3')">Weekly Call</span><span class="cal-event milestone-ev" data-event onclick="openEvent('selectteam')" style="font-size:10px;">Select Team</span></div>
+          <div class="cal-day"><div class="day-num">7</div></div>
+          <div class="cal-day"><div class="day-num">8</div></div>
+          <div class="cal-day"><div class="day-num">9</div></div>
+          <div class="cal-day"><div class="day-num">10</div></div>
+          <div class="cal-day"><div class="day-num">11</div></div>
+          <div class="cal-day"><div class="day-num">12</div></div>
+          <div class="cal-day"><div class="day-num">13</div><span class="cal-event joint-ev" data-event onclick="openEvent('coaching1')">Leadership Coaching</span></div>
+          <div class="cal-day"><div class="day-num">14</div></div>
+          <div class="cal-day"><div class="day-num">15</div></div>
+          <div class="cal-day"><div class="day-num">16</div></div>
+          <div class="cal-day"><div class="day-num">17</div></div>
+          <div class="cal-day"><div class="day-num">18</div></div>
+          <div class="cal-day"><div class="day-num">19</div></div>
+          <div class="cal-day"><div class="day-num">20</div><span class="cal-event weekly-ev" data-event onclick="openEvent('weekly5')">Weekly Call</span><span class="cal-event milestone-ev" data-event onclick="openEvent('blueprint')" style="font-size:10px;">📋 Blueprint</span></div>
+          <div class="cal-day"><div class="day-num">21</div></div>
+          <div class="cal-day"><div class="day-num">22</div></div>
+          <div class="cal-day"><div class="day-num">23</div></div>
+          <div class="cal-day"><div class="day-num">24</div></div>
+          <div class="cal-day"><div class="day-num">25</div></div>
+          <div class="cal-day"><div class="day-num">26</div></div>
+          <div class="cal-day"><div class="day-num">27</div><span class="cal-event weekly-ev" data-event onclick="openEvent('weekly6')">Weekly Call</span></div>
+          <div class="cal-day"><div class="day-num">28</div></div>
+          <div class="cal-day"><div class="day-num">29</div></div>
+          <div class="cal-day"><div class="day-num">30</div><span class="cal-event milestone-ev" data-event onclick="openEvent('phasememo')">📝 Phase Memo</span></div>
+          <div class="cal-day"><div class="day-num">31</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deliverables -->
+    <div class="content-section">
+      <div class="section-label">Deliverables</div>
+      <h2 class="section-title">What This Phase Produces</h2>
+      <p class="section-subtitle">As each one is ready, we'll upload it right here.</p>
+      <div class="deliverable-card">
+        <div class="deliverable-icon mint">📊</div>
+        <div class="deliverable-info">
+          <h4>Current State Blueprint</h4>
+          <p>Patterns, strengths, and gaps across instruction</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon pink">📈</div>
+        <div class="deliverable-info">
+          <h4>LEAPS Baseline Results</h4>
+          <p>Where learners are right now across key dimensions</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon lavender">👥</div>
+        <div class="deliverable-info">
+          <h4>Teacher Design Team Roster</h4>
+          <p>The people who'll co-design what comes next</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- Outcomes -->
+    <div class="content-section">
+      <div class="outcomes-box">
+        <h2>At the End of This Phase, We'll Have</h2>
+        <div class="outcomes-grid">
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A shared, evidence-based picture of what instruction actually looks like right now</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>Clear identification of what's strong and where things are inconsistent</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A teacher design team that's ready to roll into co-design</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A LEAPS baseline that guides every decision in Phase 2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PHASE 2
+       ══════════════════════════════════ -->
+  <div id="phase2" class="page">
+    <div class="hero-light">
+      <a class="back-link" onclick="showPage('welcome')">← Back to Hub</a>
+      <div class="phase-badge">
+        <div class="phase-num">2</div>
+        <div class="phase-label">Phase Two</div>
+      </div>
+      <h1>Build the Instructional Playbook</h1>
+      <p>This is where we turn what we learned into something teachers can actually use — a shared, Gotham Tech–owned model for what great challenge-based instruction looks like here.</p>
+      <div class="date-tag">April 2026</div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Who Does What</div>
+      <h2 class="section-title">Our Roles in This Phase</h2>
+      <div class="roles-grid">
+        <div class="role-card transcend-card">
+          <div class="role-card-header transcend-header">
+            <div class="header-logo t-logo">T</div>
+            Transcend Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Facilitate leadership working sessions to review current state findings</li>
+              <li>Propose and refine a customized DEEDS Playbook outline</li>
+              <li>Draft phase descriptions, protocols, and implementation guidance</li>
+              <li>Run feedback cycles with teachers and leadership</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card gotham-card">
+          <div class="role-card-header gotham-header">
+            <div class="header-logo gt-logo">GT</div>
+            Gotham Tech Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Show up to leadership working sessions and help make the big calls</li>
+              <li>Give honest feedback on draft playbook components</li>
+              <li>Validate final playbook content for school-wide use</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Deliverables</div>
+      <h2 class="section-title">What This Phase Produces</h2>
+      <div class="deliverable-card">
+        <div class="deliverable-icon mint">📘</div>
+        <div class="deliverable-info">
+          <h4>Customized DEEDS Playbook</h4>
+          <p>Gotham Tech's own instructional model</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon pink">📋</div>
+        <div class="deliverable-info">
+          <h4>Phase Descriptions &amp; Protocols</h4>
+          <p>Shared language and expectations</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon amber">⚙️</div>
+        <div class="deliverable-info">
+          <h4>Implementation Considerations</h4>
+          <p>How to keep this consistent across classrooms</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="outcomes-box">
+        <h2>At the End of This Phase, We'll Have</h2>
+        <div class="outcomes-grid">
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A Gotham Tech–owned playbook that defines what great instruction looks like here</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>Shared language that every teacher understands</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>Clear guidance on how DEEDS shows up in daily instruction</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A strong foundation to start building curriculum</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PHASE 3
+       ══════════════════════════════════ -->
+  <div id="phase3" class="page">
+    <div class="hero-light">
+      <a class="back-link" onclick="showPage('welcome')">← Back to Hub</a>
+      <div class="phase-badge">
+        <div class="phase-num">3</div>
+        <div class="phase-label">Phase Three</div>
+      </div>
+      <h1>Develop the Scope &amp; Sequence</h1>
+      <p>Now we take the playbook off the page and map it to the year — building challenge-based curriculum overviews grounded in standards and teacher input.</p>
+      <div class="date-tag">May 2026</div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Who Does What</div>
+      <h2 class="section-title">Our Roles in This Phase</h2>
+      <div class="roles-grid">
+        <div class="role-card transcend-card">
+          <div class="role-card-header transcend-header">
+            <div class="header-logo t-logo">T</div>
+            Transcend Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Facilitate a teacher design day to draft project concepts</li>
+              <li>Develop scope & sequence for selected grade levels</li>
+              <li>Incorporate feedback and finalize curriculum materials</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card gotham-card">
+          <div class="role-card-header gotham-header">
+            <div class="header-logo gt-logo">GT</div>
+            Gotham Tech Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Participate in the teacher design day</li>
+              <li>Review and give feedback on draft plans</li>
+              <li>Help identify community partners for challenges</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Deliverables</div>
+      <h2 class="section-title">What This Phase Produces</h2>
+      <div class="deliverable-card">
+        <div class="deliverable-icon mint">📅</div>
+        <div class="deliverable-info">
+          <h4>Yearlong Scope &amp; Sequence</h4>
+          <p>Standards-aligned, challenge-based plan</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon pink">📚</div>
+        <div class="deliverable-info">
+          <h4>Module Overviews</h4>
+          <p>Challenges, learning journeys, project concepts</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="outcomes-box">
+        <h2>At the End of This Phase, We'll Have</h2>
+        <div class="outcomes-grid">
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A standards-aligned plan for how challenge-based learning unfolds across the year</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>Tight alignment between the model and what teachers actually teach</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PHASE 4
+       ══════════════════════════════════ -->
+  <div id="phase4" class="page">
+    <div class="hero-light">
+      <a class="back-link" onclick="showPage('welcome')">← Back to Hub</a>
+      <div class="phase-badge">
+        <div class="phase-num">4</div>
+        <div class="phase-label">Phase Four</div>
+      </div>
+      <h1>Plan for Professional Learning</h1>
+      <p>The best model in the world means nothing if teachers aren't prepared to use it. This phase sets everyone up for a strong, confident start in the fall.</p>
+      <div class="date-tag">June 2026</div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Who Does What</div>
+      <h2 class="section-title">Our Roles in This Phase</h2>
+      <div class="roles-grid">
+        <div class="role-card transcend-card">
+          <div class="role-card-header transcend-header">
+            <div class="header-logo t-logo">T</div>
+            Transcend Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Develop a summer training strategy and timeline</li>
+              <li>Design training materials aligned to the DEEDS Playbook</li>
+              <li>Partner with leadership on roles and implementation supports</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role-card gotham-card">
+          <div class="role-card-header gotham-header">
+            <div class="header-logo gt-logo">GT</div>
+            Gotham Tech Will
+          </div>
+          <div class="role-card-body">
+            <ul>
+              <li>Confirm training dates, logistics, and staff participation</li>
+              <li>Partner on clarifying roles and supports</li>
+              <li>Handle communication and coordination for summer training</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Deliverables</div>
+      <h2 class="section-title">What This Phase Produces</h2>
+      <div class="deliverable-card">
+        <div class="deliverable-icon mint">📅</div>
+        <div class="deliverable-info">
+          <h4>Summer PL Strategy &amp; Schedule</h4>
+          <p>The full plan for summer professional learning</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon pink">📦</div>
+        <div class="deliverable-info">
+          <h4>Training Materials</h4>
+          <p>Everything teachers need, aligned to the playbook</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon lavender">🏗️</div>
+        <div class="deliverable-info">
+          <h4>Leadership Support Plan</h4>
+          <p>Roles, structures, and supports for fall</p>
+        </div>
+        <span class="coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="outcomes-box">
+        <h2>At the End of This Phase, We'll Have</h2>
+        <div class="outcomes-grid">
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>A clear plan for getting teachers ready to bring this to life</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>Training materials that actually support what happens in classrooms</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <p>Strong conditions for a coherent, confident fall rollout</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ RESOURCES PAGE ═══ -->
+  <div id="resources" class="page">
+    <div class="hero-dark">
+      <div class="section-label">Resource Library</div>
+      <h1>Documents, Tools<br>&amp; <em>References</em></h1>
+      <p>Everything you need in one place — survey overviews, templates, guides, and shared documents. This library will grow as we move through each phase.</p>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Surveys &amp; Data</div>
+      <h2 class="section-title" style="margin-bottom:24px;">Survey Resources</h2>
+      <div class="resource-list">
+        <a href="https://drive.google.com/file/d/1Rok52yBNV2YXXkf91qZgCpNBWvCNl9B8/view?usp=sharing" target="_blank" class="resource-card">
+          <div class="resource-icon" style="background:var(--teal-soft); color:var(--teal-dim);">📊</div>
+          <div class="resource-info">
+            <div class="resource-title">LEAPS Survey Overview</div>
+            <div class="resource-desc">Overview of the LEAPS survey — what it measures, why it matters, and how to administer it.</div>
+            <div class="resource-meta"><span class="resource-tag transcend-tag">Transcend</span><span class="resource-type">Google Drive</span></div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </a>
+        <div class="resource-card" style="opacity:0.5; cursor:default; border-style:dashed;">
+          <div class="resource-icon" style="background:#f3f4f6; color:var(--text-soft);">📋</div>
+          <div class="resource-info">
+            <div class="resource-title">Adult Culture Survey Overview</div>
+            <div class="resource-desc">Details on the adult culture survey — coming soon.</div>
+            <div class="resource-meta"><span class="resource-tag" style="background:#f3f4f6; color:var(--text-soft);">Coming Soon</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Research &amp; Frameworks</div>
+      <h2 class="section-title" style="margin-bottom:24px;">Foundational Resources</h2>
+      <div class="resource-list">
+        <a href="https://transcendeducation.org/designing-for-learning-resources/" target="_blank" class="resource-card">
+          <div class="resource-icon" style="background:var(--teal-soft); color:var(--teal-dim);">🧠</div>
+          <div class="resource-info">
+            <div class="resource-title">Science of Learning and Development</div>
+            <div class="resource-desc">Transcend's resource hub on designing for learning — research, frameworks, and tools grounded in the science of how people learn and develop.</div>
+            <div class="resource-meta"><span class="resource-tag transcend-tag">Transcend</span><span class="resource-type">transcendeducation.org</span></div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('cfi-modal').classList.add('open'); document.body.style.overflow='hidden';" class="resource-card">
+          <div class="resource-icon" style="background:#ede9fe; color:#7c3aed;">🏗️</div>
+          <div class="resource-info">
+            <div class="resource-title">Conditions for Innovation</div>
+            <div class="resource-desc">The five community conditions — Conviction, Clarity, Capacity, Coalition, and Culture — that support effective and sustainable innovation in learning environments.</div>
+            <div class="resource-meta"><span class="resource-tag transcend-tag">Transcend</span><span class="resource-type">Framework</span></div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="section-label">Phase 1</div>
+      <h2 class="section-title" style="margin-bottom:24px;">Current State Resources</h2>
+      <div class="resource-list">
+        <div class="resource-card" style="opacity:0.5; cursor:default; border-style:dashed;">
+          <div class="resource-icon" style="background:#f3f4f6; color:var(--text-soft);">📄</div>
+          <div class="resource-info">
+            <div class="resource-title">Current State Blueprint</div>
+            <div class="resource-desc">The Phase 1 deliverable — available after March 20.</div>
+            <div class="resource-meta"><span class="resource-tag" style="background:#f3f4f6; color:var(--text-soft);">Coming Soon</span></div>
+          </div>
+        </div>
+        <div class="resource-card" style="opacity:0.5; cursor:default; border-style:dashed;">
+          <div class="resource-icon" style="background:#f3f4f6; color:var(--text-soft);">📝</div>
+          <div class="resource-info">
+            <div class="resource-title">End of Phase 1 Memo</div>
+            <div class="resource-desc">Summary of Phase 1 activities and findings — available after March 30.</div>
+            <div class="resource-meta"><span class="resource-tag" style="background:#f3f4f6; color:var(--text-soft);">Coming Soon</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══ EVENT MODAL ═══ -->
+<div class="modal-overlay" id="eventModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-date" id="modalDate"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-badge" id="modalBadge"></div><span class="modal-owner" id="modalOwner" style="display:none;"></span>
+    <div class="modal-desc" id="modalDesc"></div>
+    <div id="modalPrepSection">
+      <div class="modal-section-label" id="modalPrepLabel"></div>
+      <ul class="modal-items" id="modalItems"></ul>
+    </div>
+    <div id="modalBtnSection" style="display:none;">
+      <button class="modal-btn" id="modalBtn" onclick="handleModalBtn()">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8" fill="none" stroke="#fff" stroke-width="2"/></svg>
+        <span id="modalBtnText"></span>
+      </button>
+    </div>
+    <div id="modalNoteSection" style="display:none; margin-top:20px; padding:14px 18px; background:#faf8f5; border-radius:10px; border-left:3px solid var(--gold);">
+      <p id="modalNote" style="font-size:13px; color:var(--text-mid); line-height:1.6; margin:0; font-style:italic;"></p>
+    </div>
+    <div class="modal-gcal">
+      <a class="gcal-btn" id="modalGcalBtn" href="#" target="_blank" onclick="event.preventDefault(); openGcalFromEvent(currentEventId);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Add to Google Calendar
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONDITIONS FOR INNOVATION MODAL ═══ -->
+<div class="modal-overlay" id="cfi-modal" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
+  <div class="modal" style="max-width:680px;">
+    <button class="modal-close" onclick="document.getElementById('cfi-modal').classList.remove('open');document.body.style.overflow='';">✕</button>
+    <div style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal-dim); margin-bottom:8px;">Transcend Framework</div>
+    <div class="modal-title" style="font-size:26px; margin-bottom:20px;">Conditions for Innovation</div>
+
+    <div style="display:flex; flex-direction:column; gap:18px;">
+      <div style="background:#faf8f5; border-radius:12px; padding:20px; border-left:4px solid #8b5cf6;">
+        <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:17px; color:var(--text); margin-bottom:6px;">Conviction</div>
+        <div style="font-size:13px; color:var(--text-mid); line-height:1.6;">A deep and sustaining belief in the importance and potential of the work being undertaken that fuels engagement and ensures it is prioritized. Includes conviction in the potential of all young people, in a vision of extraordinary learning, to engage in a community-based process, and through prioritization.</div>
+      </div>
+      <div style="background:#faf8f5; border-radius:12px; padding:20px; border-left:4px solid var(--teal);">
+        <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:17px; color:var(--text); margin-bottom:6px;">Clarity</div>
+        <div style="font-size:13px; color:var(--text-mid); line-height:1.6;">A comprehensive and crisp understanding of the work ahead that provides direction and a path forward. Includes clarity in the current state, in vision, and in the journey path.</div>
+      </div>
+      <div style="background:#faf8f5; border-radius:12px; padding:20px; border-left:4px solid var(--coral);">
+        <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:17px; color:var(--text); margin-bottom:6px;">Capacity</div>
+        <div style="font-size:13px; color:var(--text-mid); line-height:1.6;">The support of personnel and time required to successfully carry out the work. Includes capacity in skills and capabilities, in time and bandwidth, and through continuity of people in key roles.</div>
+      </div>
+      <div style="background:#faf8f5; border-radius:12px; padding:20px; border-left:4px solid var(--gold);">
+        <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:17px; color:var(--text); margin-bottom:6px;">Coalition</div>
+        <div style="font-size:13px; color:var(--text-mid); line-height:1.6;">The investment of a committed group of stakeholders who are helping the work become a sustained success. Includes coalition with students and families, educators and school administrators, district staff, and others within and beyond the community.</div>
+      </div>
+      <div style="background:#faf8f5; border-radius:12px; padding:20px; border-left:4px solid var(--navy);">
+        <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:17px; color:var(--text); margin-bottom:6px;">Culture</div>
+        <div style="font-size:13px; color:var(--text-mid); line-height:1.6;">Values, norms, and practices that support effective and sustainable innovation and learning for all. Includes a culture of trust and mutual respect, of collective practice, and of learning and innovation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+// ── Navigation ──
+function showPage(id) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
+  // Update active nav link
+  const links = document.querySelectorAll('.sidebar a');
+  const navMap = { welcome: 0, team: 1, executive: 2, phase1: 3, phase2: 4, phase3: 5, phase4: 6, resources: 7 };
+  links.forEach((a, i) => a.classList.toggle('active', i === navMap[id]));
+  // Close mobile sidebar
+  document.querySelector('.sidebar').classList.remove('open');
+  window.scrollTo(0, 0);
+}
+
+// ── Event Data ──
+const EVENTS = {
+  launch: {
+    date: "Monday, February 23",
+    title: "Partnership Launch",
+    badge: "milestone",
+    owner: "Jeremy",
+    desc: "Gotham Tech introduces the Transcend partnership to at least the leadership staff. This is the official kickoff \u2014 setting the tone, building excitement, and making sure everyone understands what this work is about and how it will unfold.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Prepare internal talking points about the partnership (Luis)",
+      "Plan a brief all-staff moment to introduce the work (Luis)",
+      "Share the partnership hub link with your leadership team (Luis)"
+    ],
+    btn: "Draft Agenda & Talking Points"
+  },
+  welcomecall: {
+    date: "Friday, February 13",
+    title: "Welcome Call",
+    badge: "joint",
+    owner: "Sarah",
+    desc: "Our first call together to get acquainted, walk through the partnership hub, and start planning for the onsite visit on the 23rd. This is about making sure everyone is aligned before we hit the ground running.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Review the partnership hub ahead of the call",
+      "Jot down any initial questions about the plan or timeline",
+      "Begin thinking about logistics for the Feb 23 onsite visit"
+    ]
+  },
+  staffemail: {
+    date: "Monday, February 16",
+    title: "Notify Staff About Partnership",
+    badge: "gotham",
+    desc: "Send an introductory email to staff letting them know about the upcoming Transcend partnership. This sets the stage before the formal launch on the 23rd so that teachers and staff aren\u2019t caught off guard and have context heading into the visit.",
+    prepLabel: "TO INCLUDE",
+    items: [
+      "Brief overview of the partnership and what it means for Gotham Tech",
+      "What to expect in the coming weeks (observations, focus groups, surveys)",
+      "Reassurance that observations are low-stakes and non-evaluative",
+      "Who to contact with questions"
+    ],
+    note: "If an email doesn\u2019t make sense for your culture, do the thing that does to notify them of the relationship and that they will be seeing our team.",
+    btn: "Draft Staff Email"
+  },
+  weekly1: {
+    date: "Friday, February 20",
+    title: "Weekly Partnership Call",
+    badge: "joint",
+    owner: "Sarah",
+    desc: "Our first regular weekly check-in. These calls keep us aligned, surface any concerns early, and make sure the work stays on track. We\u2019ll use this one to review the partnership hub, finalize logistics for the onsite visit, and give an overview of the LEAPS Survey and Adult Culture Survey \u2014 what they measure, why they matter, and what Gotham Tech needs to do to administer them.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Share what resonated, what questions came up as you looked at the hub",
+      "Confirm classroom observation schedule for Feb 23",
+      "Identify which teachers and student groups will participate in focus groups",
+      "Flag any scheduling constraints or sensitivities",
+      "Begin thinking about which classes will take the LEAPS survey and timeline for the Adult Culture Survey"
+    ],
+    btn: "Draft Site Visit Agenda"
+  },
+  onsite: {
+    date: "Monday, February 23",
+    title: "Onsite Visit",
+    badge: "joint",
+    owner: "Jeremy",
+    desc: "Transcend comes into the building to see instruction in action. We\u2019ll conduct classroom observations across selected grades and content areas, teacher and student focus groups, and leadership interviews. By the end of the day, Transcend will have everything needed to begin the synthesis work.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Finalize the observation schedule \u2014 which classrooms, which periods",
+      "Let teachers know observers will be present (low-stakes, not evaluative)",
+      "Reserve a quiet room for focus groups and interviews",
+      "Have copies of relevant instructional materials, unit plans, or curriculum docs ready to share",
+      "Identify 6\u20138 teachers for focus group participation",
+      "Confirm student focus group participants (aim for a diverse mix)",
+      "Schedule leadership interview(s) \u2014 45\u201360 minutes",
+      "Block time at the end of day for a quick debrief together"
+    ]
+  },
+  resources: {
+    date: "Wednesday, February 25",
+    title: "Share Instructional Resources",
+    badge: "gotham",
+    owner: "Sarah",
+    desc: "Gotham Tech shares all relevant instructional materials, unit plans, curriculum documents, and artifacts with the Transcend team. These materials are critical inputs for the data synthesis and will directly inform the Current State Blueprint.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Gather current unit plans, lesson plans, and curriculum maps",
+      "Include any rubrics, assessment tools, or project templates in use",
+      "Share any schoolwide instructional guidance documents",
+      "Upload or send materials to the Transcend team by end of day"
+    ]
+  },
+  weekly2: {
+    date: "Friday, February 27",
+    title: "Weekly Partnership Call",
+    badge: "joint",
+    desc: "Post-visit debrief call. We\u2019ll share initial impressions from the onsite visit and discuss what stood out. This is an early preview \u2014 the full synthesis comes later.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Reflect on how the visit went from your perspective",
+      "Note anything that surprised you or that you want Transcend to dig into",
+      "Start thinking about potential design team members",
+      "Confirm LEAPS Survey and Adult Culture Survey are complete"
+    ]
+  },
+  leaps: {
+    date: "Friday, February 27",
+    title: "LEAPS Survey + Adult Culture Survey Due",
+    badge: "gotham",
+    desc: "Both surveys are due today. The LEAPS survey establishes a baseline picture of the learner experience \u2014 where students are right now across key dimensions of deeper learning. The Adult Culture Survey captures teacher and staff perspectives on school culture, instructional coherence, and professional conditions. Together, these directly inform what we design.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Identify which classes will take the LEAPS survey and block time",
+      "Brief teachers on what the surveys are and why they matter",
+      "Plan for about 20\u201325 minutes of class time per group for the LEAPS survey",
+      "Ensure all staff have completed the Adult Culture Survey",
+      "Transcend will share survey links and administration instructions"
+    ]
+  },
+  synthesis: {
+    date: "Week of March 2",
+    title: "Data Synthesis Begins",
+    badge: "transcend",
+    owner: "Jeremy",
+    desc: "Transcend analyzes everything collected \u2014 observations, focus groups, interviews, survey data, and artifacts \u2014 to identify patterns, strengths, and gaps. This becomes the Current State Blueprint.",
+    prepLabel: "WHAT\u2019S HAPPENING",
+    items: [
+      "Transcend is heads-down analyzing data \u2014 no action needed from Gotham Tech this week",
+      "We may reach out with clarifying questions",
+      "LEAPS and Adult Culture Survey results will be incorporated into the analysis"
+    ]
+  },
+  weekly3: {
+    date: "Friday, March 6",
+    title: "Weekly Partnership Call",
+    badge: "joint",
+    owner: "Jeremy",
+    desc: "Check-in on synthesis progress and discuss design team selection. We\u2019ll share emerging themes and get your input before finalizing the blueprint.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Have your design team candidate list ready to discuss",
+      "Think about which teachers would bring strong, diverse perspectives to the co-design work"
+    ]
+  },
+  selectteam: {
+    date: "Friday, March 6",
+    title: "Select Design Team",
+    badge: "milestone",
+    owner: "Jeremy",
+    desc: "Together, we finalize the Teacher Design Team \u2014 the group of teacher leaders who will co-design the instructional playbook and curriculum in the phases ahead.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Confirm your list of 4\u20136 teacher leaders",
+      "Consider representation across grades, content areas, and experience levels",
+      "Plan how you\u2019ll invite and communicate the role to selected teachers",
+      "Think about what release time or support they\u2019ll need"
+    ]
+  },
+  coaching1: {
+    date: "Friday, March 13",
+    title: "Leadership Coaching Call",
+    badge: "joint",
+    owner: "Jenn",
+    desc: "A dedicated session for school leadership with Jenn. This is space to step back from the logistics and think strategically \u2014 how to communicate findings to staff, how to set up the conditions for Phase 2, and how to build internal support for the work ahead.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Reflect on what you\u2019ve heard from staff about the partnership so far",
+      "Think about how you want to frame the blueprint findings when shared more broadly",
+      "Consider what structures or supports you\u2019ll need in place for Phase 2",
+      "Bring any leadership questions or concerns you want to think through"
+    ]
+  },
+  weekly5: {
+    date: "Friday, March 20",
+    title: "Weekly Partnership Call",
+    badge: "joint",
+    desc: "Final Phase 1 call. We\u2019ll preview the Current State Blueprint before it\u2019s formally shared and discuss transition to Phase 2.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Be ready to react to initial blueprint findings",
+      "Think about what you want the design team to know before Phase 2 begins"
+    ]
+  },
+  blueprint: {
+    date: "Friday, March 20",
+    title: "Current State Blueprint Delivered",
+    badge: "milestone",
+    owner: "Sarah",
+    desc: "The big deliverable for Phase 1. This document synthesizes everything we learned \u2014 observation patterns, focus group themes, survey results, and our recommendations for what to prioritize in design.",
+    prepLabel: "WHAT TO EXPECT",
+    items: [
+      "A comprehensive but readable document \u2014 not a data dump",
+      "Clear strengths to build on and gaps to address",
+      "LEAPS baseline data and Adult Culture Survey findings with key takeaways",
+      "Recommendations that directly inform Phase 2 playbook design"
+    ]
+  },
+  weekly6: {
+    date: "Friday, March 27",
+    title: "Weekly Partnership Call",
+    badge: "joint",
+    owner: "Jeremy",
+    desc: "Post-blueprint debrief. We\u2019ll discuss reactions to the Current State Blueprint, answer questions, and begin planning the transition into Phase 2 design work.",
+    prepLabel: "TO PREPARE",
+    items: [
+      "Review the Current State Blueprint and note any questions or reactions",
+      "Think about priorities for Phase 2 playbook design",
+      "Share any initial feedback from the design team"
+    ]
+  },
+  phasememo: {
+    date: "Monday, March 30",
+    title: "End of Phase 1 Memo",
+    badge: "milestone",
+    owner: "Jeremy, Sarah & Jenn",
+    desc: "A brief, clear summary of what was accomplished in Phase 1 \u2014 what we learned, what was delivered, and what\u2019s ahead. This memo can be shared with leadership, staff, or anyone who needs a quick picture of where the work stands heading into Phase 2.",
+    prepLabel: "WHAT TO EXPECT",
+    items: [
+      "Summary of Phase 1 activities and milestones completed",
+      "Key findings from the Current State Blueprint",
+      "Overview of the Design Team and their role going forward",
+      "Preview of Phase 2 scope and timeline"
+    ]
+  }
+};
+
+var currentEventId = null;
+function openEvent(id) {
+  const e = EVENTS[id];
+  if (!e) return;
+  currentEventId = id;
+  document.getElementById('modalDate').textContent = e.date;
+  document.getElementById('modalTitle').textContent = e.title;
+  const badge = document.getElementById('modalBadge');
+  badge.textContent = e.badge === 'joint' ? 'JOINT' : e.badge === 'transcend' ? 'TRANSCEND' : e.badge === 'gotham' ? 'GOTHAM TECH' : 'MILESTONE';
+  badge.className = 'modal-badge ' + e.badge;
+  const owner = document.getElementById('modalOwner');
+  if (e.owner) {
+    owner.textContent = e.owner;
+    owner.style.display = 'inline-block';
+  } else {
+    owner.style.display = 'none';
+  }
+  document.getElementById('modalDesc').textContent = e.desc;
+  document.getElementById('modalPrepLabel').textContent = e.prepLabel;
+  const ul = document.getElementById('modalItems');
+  ul.innerHTML = '';
+  e.items.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ul.appendChild(li);
+  });
+  const btnSection = document.getElementById('modalBtnSection');
+  if (e.btn) {
+    document.getElementById('modalBtnText').textContent = e.btn;
+    btnSection.style.display = 'block';
+  } else {
+    btnSection.style.display = 'none';
+  }
+  const noteSection = document.getElementById('modalNoteSection');
+  if (e.note) {
+    document.getElementById('modalNote').textContent = e.note;
+    noteSection.style.display = 'block';
+  } else {
+    noteSection.style.display = 'none';
+  }
+  document.getElementById('eventModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function handleModalBtn() {
+  alert('Coming soon \u2014 ' + EVENTS[currentEventId].btn + ' will be linked here.');
+}
+
+// ── Google Calendar Integration ──
+const GCAL_BASE = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+
+function dateToGcal(dateStr) {
+  // Map event dates to actual 2026 dates (YYYYMMDD)
+  const dateMap = {
+    'Friday, February 13': '20260213',
+    'Monday, February 16': '20260216',
+    'Friday, February 20': '20260220',
+    'Monday, February 23': '20260223',
+    'Wednesday, February 25': '20260225',
+    'Friday, February 27': '20260227',
+    'Week of March 2': '20260302',
+    'Friday, March 6': '20260306',
+    'Friday, March 13': '20260313',
+    'Friday, March 20': '20260320',
+    'Friday, March 27': '20260327',
+    'Monday, March 30': '20260330'
+  };
+  return dateMap[dateStr] || '20260213';
+}
+
+function buildGcalUrl(title, dateStr, description) {
+  const d = dateToGcal(dateStr);
+  // Calculate next day properly
+  const y = parseInt(d.slice(0,4)), m = parseInt(d.slice(4,6))-1, day = parseInt(d.slice(6,8));
+  const next = new Date(y, m, day + 1);
+  const nd = next.getFullYear() + String(next.getMonth()+1).padStart(2,'0') + String(next.getDate()).padStart(2,'0');
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: title + ' — Gotham Tech × Transcend',
+    dates: d + '/' + nd,
+    details: description
+  });
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+
+function openGcalFromEvent(eventId) {
+  const e = EVENTS[eventId];
+  if (!e) return;
+  let desc = e.desc + '\n\n' + e.prepLabel + ':\n';
+  e.items.forEach(item => { desc += '• ' + item + '\n'; });
+  if (e.owner) desc += '\nLead: ' + e.owner;
+  const url = buildGcalUrl(e.title, e.date, desc);
+  window.open(url, '_blank');
+}
+
+function openGcalFromChecklist(title, dateStr, items) {
+  let desc = title + '\n\nTo Do:\n';
+  items.forEach(item => { desc += '• ' + item + '\n'; });
+  const url = buildGcalUrl(title, dateStr, desc);
+  window.open(url, '_blank');
+}
+
+const GCAL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg>';
+function closeModal() {
+  document.getElementById('eventModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Checkbox persistence ──
+function initCheckboxes() {
+  const saved = JSON.parse(localStorage.getItem('gt-hub-checks') || '{}');
+  // Role card checkboxes
+  document.querySelectorAll('.role-card-body li').forEach((li, i) => {
+    const page = li.closest('.page').id;
+    const key = page + '-' + i;
+    if (saved[key]) li.classList.add('checked');
+    li.addEventListener('click', () => {
+      li.classList.toggle('checked');
+      const state = JSON.parse(localStorage.getItem('gt-hub-checks') || '{}');
+      state[key] = li.classList.contains('checked');
+      if (!state[key]) delete state[key];
+      localStorage.setItem('gt-hub-checks', JSON.stringify(state));
+    });
+  });
+  // Phase checklist accordions
+  document.querySelectorAll('.checklist-body li').forEach((li, i) => {
+    const key = 'cl-' + i;
+    if (saved[key]) li.classList.add('checked');
+    li.addEventListener('click', () => {
+      li.classList.toggle('checked');
+      const state = JSON.parse(localStorage.getItem('gt-hub-checks') || '{}');
+      state[key] = li.classList.contains('checked');
+      if (!state[key]) delete state[key];
+      localStorage.setItem('gt-hub-checks', JSON.stringify(state));
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', initCheckboxes);
+
+// ── Add gcal buttons to accordion groups ──
+document.addEventListener('DOMContentLoaded', function() {
+  const dateMap = {
+    'Feb 13': 'Friday, February 13',
+    'Feb 16': 'Monday, February 16',
+    'Feb 20': 'Friday, February 20',
+    'Feb 23': 'Monday, February 23',
+    'Feb 25': 'Wednesday, February 25',
+    'Feb 27': 'Friday, February 27',
+    'Mar 2': 'Week of March 2',
+    'Mar 6': 'Friday, March 6',
+    'Mar 13': 'Friday, March 13',
+    'Mar 20': 'Friday, March 20',
+    'Mar 27': 'Friday, March 27',
+    'Mar 30': 'Monday, March 30'
+  };
+  document.querySelectorAll('.checklist-group').forEach(group => {
+    const label = group.querySelector('.checklist-group-label');
+    if (!label) return;
+    const labelText = label.textContent.trim();
+    // Extract date part and title
+    const parts = labelText.split(' · ');
+    const dateShort = parts[0];
+    const title = parts[1] || labelText;
+    const fullDate = dateMap[dateShort] || 'Friday, February 13';
+    // Get all items
+    const items = Array.from(group.querySelectorAll('li')).map(li => li.textContent.trim());
+    // Wrap label in header div with gcal button
+    const header = document.createElement('div');
+    header.className = 'checklist-group-header';
+    label.parentNode.insertBefore(header, label);
+    header.appendChild(label);
+    const btn = document.createElement('a');
+    btn.className = 'gcal-btn';
+    btn.href = '#';
+    btn.innerHTML = GCAL_SVG + ' Add to Calendar';
+    btn.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();      openGcalFromChecklist(title, fullDate, items);
+    };
+    header.appendChild(btn);
+  });
+});
+</script>
+</body>
+</html>
