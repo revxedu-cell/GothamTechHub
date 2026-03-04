@@ -1503,6 +1503,69 @@ a.resource-card:hover {
 }
 .chtab:hover { border-color: var(--teal); color: var(--teal-dim); }
 .chtab.active { background: var(--navy); color: white; border-color: var(--navy); }
+
+/* ═══ Checklist Tabs ═══ */
+.chtab-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.chtab {
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--text-mid);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chtab:hover { border-color: var(--teal); color: var(--teal-dim); }
+.chtab.active { background: var(--navy); color: white; border-color: var(--navy); }
+.sheet-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+.sheet-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+}
+.sheet-table thead tr {
+  background: var(--navy);
+  color: white;
+}
+.sheet-table thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.sheet-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.sheet-table tbody tr:hover { background: var(--cream); }
+.sheet-table tbody td {
+  padding: 12px 16px;
+  color: var(--text);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.sheet-table tbody td:nth-child(2) {
+  color: var(--text-soft);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.sheet-table tbody td:nth-child(3) {
+  text-align: center;
+}
+.task-done { text-decoration: line-through; color: var(--text-soft); }
+.check-yes { color: #10b981; font-size: 16px; }
+.check-no { color: var(--border); font-size: 16px; }
 </style>
 </head>
 <body>
@@ -1932,34 +1995,30 @@ a.resource-card:hover {
     <div class="content-section">
       <div class="section-label">Task Checklists</div>
       <h2 class="section-title">Who Does What</h2>
-      <p class="section-subtitle">Updated in real time. <a href="https://docs.google.com/spreadsheets/d/1HhiPjeLwMtzqu3Gef2612bCmgUHM7CePiQWPPYXLD7o/edit?usp=sharing" target="_blank" style="color:var(--teal-dim);font-weight:600;">Open in Google Sheets</a> to check off tasks.</p>
+      <p class="section-subtitle">Tasks by person for Phase 1. <a href="https://docs.google.com/spreadsheets/d/1HhiPjeLwMtzqu3Gef2612bCmgUHM7CePiQWPPYXLD7o/edit?usp=sharing" target="_blank" style="color:var(--teal-dim);font-weight:600;">Open in Google Sheets ↗</a> to check off tasks.</p>
 
-      <div class="checklist-tabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+      <div class="chtab-bar">
         <button class="chtab active" onclick="showTab('gt')" id="tab-gt">Gotham Tech</button>
         <button class="chtab" onclick="showTab('sarah')" id="tab-sarah">Sarah</button>
         <button class="chtab" onclick="showTab('jeremy')" id="tab-jeremy">Jeremy</button>
         <button class="chtab" onclick="showTab('jenn')" id="tab-jenn">Jenn</button>
       </div>
 
-      <div class="chtab-panel" id="panel-gt">
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
-          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7AGjwuVFIGYexaaUFVKR0e1kTEa_ECvmaMQdZnvWEHTQRp4tO6A3k5_tIsRLd51Y2gpWeCdf-ghE2/pubhtml?gid=0&single=true&widget=false&headers=false" style="border:0;display:block;width:100%;height:520px;"></iframe>
-        </div>
+      <div id="panel-gt" class="chtab-panel">
+        <div class="sheet-loading" id="loading-gt">Loading tasks…</div>
+        <div class="sheet-table" id="table-gt"></div>
       </div>
-      <div class="chtab-panel" id="panel-sarah" style="display:none;">
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
-          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7AGjwuVFIGYexaaUFVKR0e1kTEa_ECvmaMQdZnvWEHTQRp4tO6A3k5_tIsRLd51Y2gpWeCdf-ghE2/pubhtml?gid=808390947&single=true&widget=false&headers=false" style="border:0;display:block;width:100%;height:300px;"></iframe>
-        </div>
+      <div id="panel-sarah" class="chtab-panel" style="display:none;">
+        <div class="sheet-loading" id="loading-sarah">Loading tasks…</div>
+        <div class="sheet-table" id="table-sarah"></div>
       </div>
-      <div class="chtab-panel" id="panel-jeremy" style="display:none;">
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
-          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7AGjwuVFIGYexaaUFVKR0e1kTEa_ECvmaMQdZnvWEHTQRp4tO6A3k5_tIsRLd51Y2gpWeCdf-ghE2/pubhtml?gid=399640131&single=true&widget=false&headers=false" style="border:0;display:block;width:100%;height:420px;"></iframe>
-        </div>
+      <div id="panel-jeremy" class="chtab-panel" style="display:none;">
+        <div class="sheet-loading" id="loading-jeremy">Loading tasks…</div>
+        <div class="sheet-table" id="table-jeremy"></div>
       </div>
-      <div class="chtab-panel" id="panel-jenn" style="display:none;">
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
-          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7AGjwuVFIGYexaaUFVKR0e1kTEa_ECvmaMQdZnvWEHTQRp4tO6A3k5_tIsRLd51Y2gpWeCdf-ghE2/pubhtml?gid=188315842&single=true&widget=false&headers=false" style="border:0;display:block;width:100%;height:220px;"></iframe>
-        </div>
+      <div id="panel-jenn" class="chtab-panel" style="display:none;">
+        <div class="sheet-loading" id="loading-jenn">Loading tasks…</div>
+        <div class="sheet-table" id="table-jenn"></div>
       </div>
     </div>
 
@@ -3752,6 +3811,80 @@ function openGcalFromEvent(eventId) {
   const url = buildGcalUrl(e.date, e.title, desc);
   window.open(url, '_blank');
 }
+
+// ── Checklist tabs ──
+function showTab(id) {
+  document.querySelectorAll('.chtab-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.chtab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).style.display = 'block';
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+const SHEET_TABS = { gt:'0', sarah:'808390947', jeremy:'399640131', jenn:'188315842' };
+const SHEET_ID = '2PACX-1vT7AGjwuVFIGYexaaUFVKR0e1kTEa_ECvmaMQdZnvWEHTQRp4tO6A3k5_tIsRLd51Y2gpWeCdf-ghE2';
+
+function csvUrl(gid) {
+  return 'https://docs.google.com/spreadsheets/d/e/' + SHEET_ID + '/pub?gid=' + gid + '&single=true&output=csv';
+}
+
+function parseCSV(text) {
+  const rows = [];
+  const lines = text.split('\n');
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const cols = []; let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+      else { cur += c; }
+    }
+    cols.push(cur.trim());
+    rows.push(cols);
+  }
+  return rows;
+}
+
+function renderTable(id, rows) {
+  const loading = document.getElementById('loading-' + id);
+  const container = document.getElementById('table-' + id);
+  if (!rows || rows.length < 2) { loading.textContent = 'No tasks found.'; return; }
+  loading.style.display = 'none';
+  const headers = rows[0];
+  let html = '<table><thead><tr>';
+  headers.forEach(h => { html += '<th>' + h + '</th>'; });
+  html += '</tr></thead><tbody>';
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    if (row.every(c => !c)) continue;
+    html += '<tr>';
+    row.forEach((cell, j) => {
+      const upper = cell.toUpperCase();
+      const isDone = upper === 'TRUE' || upper === 'YES' || cell === '✓';
+      const isStatus = headers[j] && headers[j].toLowerCase().includes('status');
+      if (isStatus) {
+        html += '<td><span class="' + (isDone ? 'check-yes' : 'check-no') + '">' + (isDone ? '✓' : '○') + '</span></td>';
+      } else {
+        html += '<td>' + cell + '</td>';
+      }
+    });
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+function loadSheetTab(id) {
+  fetch(csvUrl(SHEET_TABS[id]))
+    .then(r => r.text())
+    .then(text => renderTable(id, parseCSV(text)))
+    .catch(() => { document.getElementById('loading-' + id).textContent = 'Could not load tasks.'; });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  Object.keys(SHEET_TABS).forEach(id => loadSheetTab(id));
+});
+
 </script>
 </body>
 </html>
