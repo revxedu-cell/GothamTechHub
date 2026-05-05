@@ -2255,37 +2255,6 @@ a.resource-card:hover {
       </a>
     </div>
 
-    <!-- Task Checklists -->
-    <div class="content-section">
-      <div class="section-label">Task Checklists</div>
-      <h2 class="section-title">Who Does What</h2>
-      <p class="section-subtitle">Tasks by person for Phase 1. <a href="https://docs.google.com/spreadsheets/d/1HhiPjeLwMtzqu3Gef2612bCmgUHM7CePiQWPPYXLD7o/edit?usp=sharing" target="_blank" style="color:var(--teal-dim);font-weight:600;">Open in Google Sheets ↗</a> to check off tasks.</p>
-
-      <div class="chtab-bar">
-        <button class="chtab active" onclick="showTab('gt')" id="tab-gt">Gotham Tech</button>
-        <button class="chtab" onclick="showTab('sarah')" id="tab-sarah">Sarah</button>
-        <button class="chtab" onclick="showTab('jeremy')" id="tab-jeremy">Jeremy</button>
-        <button class="chtab" onclick="showTab('jenn')" id="tab-jenn">Jenn</button>
-      </div>
-
-      <div id="panel-gt" class="chtab-panel">
-        <div class="sheet-loading" id="loading-gt">Loading tasks…</div>
-        <div class="sheet-table" id="table-gt"></div>
-      </div>
-      <div id="panel-sarah" class="chtab-panel" style="display:none;">
-        <div class="sheet-loading" id="loading-sarah">Loading tasks…</div>
-        <div class="sheet-table" id="table-sarah"></div>
-      </div>
-      <div id="panel-jeremy" class="chtab-panel" style="display:none;">
-        <div class="sheet-loading" id="loading-jeremy">Loading tasks…</div>
-        <div class="sheet-table" id="table-jeremy"></div>
-      </div>
-      <div id="panel-jenn" class="chtab-panel" style="display:none;">
-        <div class="sheet-loading" id="loading-jenn">Loading tasks…</div>
-        <div class="sheet-table" id="table-jenn"></div>
-      </div>
-    </div>
-
     <!-- Deliverables -->
     <div class="content-section">
       <div class="section-label">Deliverables</div>
@@ -2448,6 +2417,29 @@ a.resource-card:hover {
           </div>
         </div>
 
+        <!-- Session 2 – May 6 -->
+        <div style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--border);background:rgba(46,232,197,0.03);">
+          <div style="padding:24px;background:linear-gradient(160deg,#0d2e22,#0a3d2e);display:flex;flex-direction:column;justify-content:flex-start;gap:8px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);">Session 2</div>
+            <div style="font-size:15px;font-weight:700;color:#fff;line-height:1.3;">Challenge Ideation &amp; Scope &amp; Sequence</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;">May 6 · On Site</div>
+          </div>
+          <div style="padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-soft);margin-bottom:8px;">What's Happening</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Drafting challenge questions using the ideation protocol; exploring DEEDS as unit architecture across courses</div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-soft);margin-bottom:8px;">Who's There</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Full Design Team · On site</div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-soft);margin-bottom:8px;">Output</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Draft challenge ideas per course; early DEEDS unit architecture per subject</div>
+            </div>
+          </div>
+        </div>
+
         <!-- Ongoing Co-Design -->
         <div style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--border);background:rgba(46,232,197,0.03);">
           <div style="padding:24px;background:linear-gradient(160deg,#2d1a3e,#1e1030);display:flex;flex-direction:column;justify-content:flex-start;gap:8px;">
@@ -2550,33 +2542,6 @@ a.resource-card:hover {
       <div class="section-label">Leadership Team Role</div>
       <h2 class="section-title">Weekly Friday Check-ins</h2>
       <p class="section-subtitle">Leadership meets every Friday at 12:30 to guide and review the work — except during GT's spring break (4/3 and 4/10).</p>
-      <div style="margin-top:24px;border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-        <div style="display:grid;grid-template-columns:200px 1fr;background:var(--navy);padding:12px 24px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Date</div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Focus</div>
-        </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 24px;border-bottom:1px solid var(--border);background:#fff;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--text);">Friday, Apr 17</div>
-            <div style="font-size:11px;color:var(--text-soft);margin-top:2px;">12:30</div>
-          </div>
-          <div style="font-size:14px;color:var(--text-mid);align-self:center;">Debrief site visit, review playbook architecture, and discuss pilots</div>
-        </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 24px;border-bottom:1px solid var(--border);background:var(--cream);">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--text);">Friday, Apr 24</div>
-            <div style="font-size:11px;color:var(--text-soft);margin-top:2px;">12:30 · Late April</div>
-          </div>
-          <div style="font-size:14px;color:var(--text-mid);align-self:center;">Review classroom look-fors and implementation guidance</div>
-        </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 24px;background:#fff;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--text);">Friday, May 1</div>
-            <div style="font-size:11px;color:var(--text-soft);margin-top:2px;">12:30 · Early May</div>
-          </div>
-          <div style="font-size:14px;color:var(--text-mid);align-self:center;">Confirm alignment with school priorities and sign off on final playbook</div>
-        </div>
-      </div>
     </div>
 
     <!-- Design Team Meetings -->
@@ -2675,37 +2640,6 @@ a.resource-card:hover {
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <!-- Task Checklists -->
-    <div class="content-section">
-      <div class="section-label">Task Checklists</div>
-      <h2 class="section-title">Who Does What</h2>
-      <p class="section-subtitle">Tasks by person for Phase 2. <a href="https://docs.google.com/spreadsheets/d/1HhiPjeLwMtzqu3Gef2612bCmgUHM7CePiQWPPYXLD7o/edit?usp=sharing" target="_blank" style="color:var(--teal-dim);font-weight:600;">Open in Google Sheets ↗</a> to check off tasks.</p>
-
-      <div class="chtab-bar">
-        <button class="chtab active" onclick="showTab2('gt')" id="tab2-gt">Gotham Tech</button>
-        <button class="chtab" onclick="showTab2('sarah')" id="tab2-sarah">Sarah</button>
-        <button class="chtab" onclick="showTab2('jeremy')" id="tab2-jeremy">Jeremy</button>
-        <button class="chtab" onclick="showTab2('jenn')" id="tab2-jenn">Jenn</button>
-      </div>
-
-      <div id="panel2-gt" class="chtab-panel">
-        <div class="sheet-loading" id="loading2-gt">Loading tasks…</div>
-        <div class="sheet-table" id="table2-gt"></div>
-      </div>
-      <div id="panel2-sarah" class="chtab-panel" style="display:none;">
-        <div class="sheet-loading" id="loading2-sarah">Loading tasks…</div>
-        <div class="sheet-table" id="table2-sarah"></div>
-      </div>
-      <div id="panel2-jeremy" class="chtab-panel" style="display:none;">
-        <div class="sheet-loading" id="loading2-jeremy">Loading tasks…</div>
-        <div class="sheet-table" id="table2-jeremy"></div>
-      </div>
-      <div id="panel2-jenn" class="chtab-panel" style="display:none;">
-        <div class="sheet-loading" id="loading2-jenn">Loading tasks…</div>
-        <div class="sheet-table" id="table2-jenn"></div>
       </div>
     </div>
 
@@ -3157,67 +3091,11 @@ a.resource-card:hover {
       <p>Everything in one place — session materials, survey results, frameworks, and phase deliverables. This library grows as we move through each phase.</p>
     </div>
 
-    <!-- UP NEXT BANNER -->
-    <div class="content-section" style="background:linear-gradient(135deg,#0d1f35,#1a3a5c);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
-        <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);">Up Next</span>
-        <span style="height:1px;flex:1;background:rgba(46,232,197,0.2);"></span>
-        <span style="font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;">May 6, 2026 · 9:00–12:00 · On Site</span>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
-        <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px;">Design Team Session 2</div>
-          <h2 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.25;margin:0 0 12px;">Challenge Ideation<br><em style="color:var(--teal);">&amp; Scope &amp; Sequence</em></h2>
-          <p style="font-size:13.5px;color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 20px;">Full Design Team plus Natalie Fermoselle. This session moves between playbook and scope &amp; sequence work — drafting challenge questions and exploring how DEEDS works as a unit architecture across all courses.</p>
-          <a href="https://canva.link/qfc4k9yz5h3628t" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--navy);font-size:13px;font-weight:700;padding:10px 20px;border-radius:8px;text-decoration:none;">
-            📊 Open Session Slides ↗
-          </a>
-        </div>
-        <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;">Session Resources</div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <a href="https://docs.google.com/document/d/1cin45sSBt1guQ-lHQ9q-lddSyx0haGsIG1hqoIzCgik/edit?tab=t.17q0ud1rim9j" target="_blank" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;text-decoration:none;">
-              <span style="font-size:18px;flex-shrink:0;">🗺️</span>
-              <div style="min-width:0;">
-                <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">DEEDS Challenge Ideation Protocol</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.4);">Google Doc · Protocol + Graphic Organizer</div>
-              </div>
-              <span style="margin-left:auto;color:rgba(255,255,255,0.3);font-size:12px;flex-shrink:0;">↗</span>
-            </a>
-            <a href="https://docs.google.com/document/d/1LzjzPz5ShGFyiAfiiZhYnAyE_3WDkO2tSEu0cs61dTc/edit?tab=t.0" target="_blank" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;text-decoration:none;">
-              <span style="font-size:18px;flex-shrink:0;">🏗️</span>
-              <div style="min-width:0;">
-                <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">DEEDS as Unit Architecture</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.4);">Google Doc · Proposal Draft</div>
-              </div>
-              <span style="margin-left:auto;color:rgba(255,255,255,0.3);font-size:12px;flex-shrink:0;">↗</span>
-            </a>
-            <a href="https://docs.google.com/document/d/1g4x-EGFpKW1WjuFgaY0N9SpWEuY3psGD5n3Ii_GMWcw/edit?tab=t.r5k2997pm5dw" target="_blank" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;text-decoration:none;">
-              <span style="font-size:18px;flex-shrink:0;">📋</span>
-              <div style="min-width:0;">
-                <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">Draft Lesson Plan Template 2.0</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.4);">Google Doc · Draft</div>
-              </div>
-              <span style="margin-left:auto;color:rgba(255,255,255,0.3);font-size:12px;flex-shrink:0;">↗</span>
-            </a>
-            <a href="https://www.canva.com/design/DAHHs0N86wE/-gs0xGPXCFrPteOzIxM8mg/edit" target="_blank" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;text-decoration:none;">
-              <span style="font-size:18px;flex-shrink:0;">📝</span>
-              <div style="min-width:0;">
-                <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">Draft Collaborative Text Analysis Protocol</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.4);">Canva · Draft</div>
-              </div>
-              <span style="margin-left:auto;color:rgba(255,255,255,0.3);font-size:12px;flex-shrink:0;">↗</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- ALL SESSIONS -->
     <div class="content-section">
       <div class="section-label">Design Team Sessions</div>
       <h2 class="section-title" style="margin-bottom:6px;">All Sessions</h2>
-      <p style="font-size:13.5px;color:var(--text-mid);margin-bottom:24px;line-height:1.6;">Session materials live here regardless of which track they touch. Sessions spanning both tracks appear once.</p>
+      <p style="font-size:13.5px;color:var(--text-mid);margin-bottom:24px;line-height:1.6;">Materials from Design Team Sessions live here.</p>
       <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;">
 
         <!-- Session 1 – complete -->
@@ -3254,12 +3132,12 @@ a.resource-card:hover {
           </div>
         </div>
 
-        <!-- Session 2 – tomorrow -->
+        <!-- Session 2 -->
         <div style="display:grid;grid-template-columns:200px 1fr;background:rgba(46,232,197,0.03);border-left:3px solid var(--teal);">
           <div style="padding:22px 24px;background:linear-gradient(160deg,#0d2e22,#0a3d2e);display:flex;flex-direction:column;gap:6px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);">Session 2 · Tomorrow</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);">Session 2</div>
             <div style="font-size:14px;font-weight:700;color:#fff;line-height:1.3;">Challenge Ideation &amp; Scope &amp; Sequence</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.4);">May 6 · 9–12 · On Site</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);">May 6 · On Site</div>
             <div style="margin-top:6px;display:flex;gap:5px;flex-wrap:wrap;">
               <span style="font-size:10px;font-weight:700;background:rgba(46,232,197,0.15);color:var(--teal);padding:3px 8px;border-radius:4px;">Playbook</span>
               <span style="font-size:10px;font-weight:700;background:rgba(239,70,75,0.15);color:var(--coral);padding:3px 8px;border-radius:4px;">S&amp;S</span>
